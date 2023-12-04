@@ -20,9 +20,9 @@ namespace CRUDGame
             this.Personagems = new HashSet<Personagem>();
         }
     
-        public int IdSubclasse { get; set; }
+        public int Id { get; set; }
         public string Descricao { get; set; }
-        public int ClasseID { get; set; }
+        public Nullable<int> ClasseId { get; set; }
     
         public virtual Classe Classe { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

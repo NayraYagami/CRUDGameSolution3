@@ -13,10 +13,10 @@ namespace CRUDGame
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class RPGDBEntities : DbContext
+    public partial class RPGDBEntities2 : DbContext
     {
-        public RPGDBEntities()
-            : base("name=RPGDBEntities")
+        public RPGDBEntities2()
+            : base("name=RPGDBEntities2")
         {
         }
     
@@ -25,12 +25,12 @@ namespace CRUDGame
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Classe> Classes { get; set; }
-        public virtual DbSet<Raca> Racas { get; set; }
-        public virtual DbSet<Habilidade> Habilidades { get; set; }
-        public virtual DbSet<Subclasse> Subclasses { get; set; }
-        public virtual DbSet<Aparencia> Aparencias { get; set; }
         public virtual DbSet<Atributo> Atributoes { get; set; }
-        public virtual DbSet<Personagem> Personagens { get; set; }
+        public virtual DbSet<Classe> Classes { get; set; }
+        public virtual DbSet<Cor> Cors { get; set; }
+        public virtual DbSet<Habilidade> Habilidades { get; set; }
+        public virtual DbSet<Personagem> Personagems { get; set; }
+        public virtual DbSet<Raca> Racas { get; set; }
+        public virtual DbSet<Subclasse> Subclasses { get; set; }
     }
 }

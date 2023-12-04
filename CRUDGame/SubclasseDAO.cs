@@ -12,7 +12,7 @@ namespace CRUDGame
 
             try
             {
-                using (var ctx = new RPGDBEntities())
+                using (var ctx = new RPGDBEntities2())
                 {
                     ctx.Subclasses.Add(novaSubclasse);
                     ctx.SaveChanges();
@@ -33,7 +33,7 @@ namespace CRUDGame
             List<Subclasse> subClasses = null;
             try
             {
-                using (var ctx = new RPGDBEntities())
+                using (var ctx = new RPGDBEntities2())
                 {
                     subClasses = ctx.Subclasses.OrderBy(x => x.Descricao).ToList();
                 }
@@ -48,10 +48,10 @@ namespace CRUDGame
         {
             Subclasse sub = null;
 
-            using (var ctx = new RPGDBEntities())
+            using (var ctx = new RPGDBEntities2())
             {
                 sub = ctx.Subclasses.FirstOrDefault(
-                        x => x.IdSubclasse == idSubclasse
+                        x => x.Id == idSubclasse
                      );
                 ctx.Subclasses.Remove(sub);
                 ctx.SaveChanges();

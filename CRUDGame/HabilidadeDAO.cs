@@ -10,7 +10,7 @@ namespace CRUDGame
             string mensagem = "";
             try
             {
-                using (var ctx = new RPGDBEntities())
+                using (var ctx = new RPGDBEntities2())
                 {
                     Habilidade habilidade = ctx.Habilidades.Add(novaHabilidade);
                     ctx.SaveChanges();

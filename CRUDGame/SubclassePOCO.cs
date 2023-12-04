@@ -13,7 +13,7 @@ namespace CRUDGame
         public Classe GetClasse
         {
             get {
-                getClasse = ClasseDAO.ListarClasses(ClasseID);
+                getClasse = ClasseDAO.ListarClasses(Id);
                 return getClasse; 
             }            
         }

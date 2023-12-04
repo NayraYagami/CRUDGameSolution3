@@ -14,27 +14,32 @@ namespace CRUDGame
     
     public partial class Personagem
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Personagem()
-        {
-            this.Habilidades = new HashSet<Habilidade>();
-        }
-    
-        public int IdPersonagem { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> HabilidadeId { get; set; }
+        public Nullable<int> RacaId { get; set; }
+        public Nullable<int> SubclasseId { get; set; }
+        public Nullable<int> Nivel { get; set; }
+        public string Nome { get; set; }
         public Nullable<System.DateTime> DataNasc { get; set; }
-        public int Nivel { get; set; }
-        public string NomePersonagem { get; set; }
         public string Sexo { get; set; }
-        public int RacaID { get; set; }
-        public int SubclasseID { get; set; }
-        public int AparenciaID { get; set; }
-        public int AtributoID { get; set; }
+        public Nullable<int> Forca { get; set; }
+        public Nullable<int> Destreza { get; set; }
+        public Nullable<int> Sabedoria { get; set; }
+        public Nullable<int> Constituicao { get; set; }
+        public Nullable<int> Inteligencia { get; set; }
+        public Nullable<int> Carisma { get; set; }
+        public Nullable<decimal> Peso { get; set; }
+        public Nullable<decimal> Altura { get; set; }
+        public Nullable<int> CorCabeloId { get; set; }
+        public string EstiloCabelo { get; set; }
+        public Nullable<int> CorOlhoId { get; set; }
+        public Nullable<int> CorPeleId { get; set; }
     
-        public virtual Aparencia Aparencia { get; set; }
-        public virtual Atributo Atributo { get; set; }
+        public virtual Cor Cor { get; set; }
+        public virtual Cor Cor1 { get; set; }
+        public virtual Cor Cor2 { get; set; }
+        public virtual Habilidade Habilidade { get; set; }
         public virtual Raca Raca { get; set; }
         public virtual Subclasse Subclasse { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Habilidade> Habilidades { get; set; }
     }
 }

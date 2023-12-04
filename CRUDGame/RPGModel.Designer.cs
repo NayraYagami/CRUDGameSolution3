@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\1050440\source\repos\CRUDGameSolution\CRUDGame\RPGModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\20221stads005\Desktop\CRUDGameSolution\3\CRUDGameSolution\CRUDGame\RPGModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

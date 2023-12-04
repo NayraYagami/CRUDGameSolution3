@@ -17,13 +17,15 @@ namespace CRUDGame
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Habilidade()
         {
-            this.Personagens = new HashSet<Personagem>();
+            this.Personagems = new HashSet<Personagem>();
         }
     
-        public int IdHabilidade { get; set; }
+        public int Id { get; set; }
         public string Descricao { get; set; }
+        public Nullable<int> CorId { get; set; }
     
+        public virtual Cor Cor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Personagem> Personagens { get; set; }
+        public virtual ICollection<Personagem> Personagems { get; set; }
     }
 }

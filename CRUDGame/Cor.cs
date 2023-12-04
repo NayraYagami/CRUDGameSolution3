@@ -12,23 +12,27 @@ namespace CRUDGame
     using System;
     using System.Collections.Generic;
     
-    public partial class Aparencia
+    public partial class Cor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Aparencia()
+        public Cor()
         {
+            this.Habilidades = new HashSet<Habilidade>();
             this.Personagems = new HashSet<Personagem>();
+            this.Personagems1 = new HashSet<Personagem>();
+            this.Personagems2 = new HashSet<Personagem>();
         }
     
-        public int IdAparencia { get; set; }
-        public decimal Peso { get; set; }
-        public decimal Altura { get; set; }
-        public string CorCabelo { get; set; }
-        public string EstiloCabelo { get; set; }
-        public string CorOlho { get; set; }
-        public string CorPele { get; set; }
+        public int Id { get; set; }
+        public string Descricao { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Habilidade> Habilidades { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Personagem> Personagems { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Personagem> Personagems1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Personagem> Personagems2 { get; set; }
     }
 }

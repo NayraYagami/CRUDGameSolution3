@@ -16,7 +16,7 @@ namespace CRUDGame
             string mensagem = "";
             try
             {
-                using (var ctx = new RPGDBEntities())
+                using (var ctx = new RPGDBEntities2())
                 {
                     ctx.Racas.Add(novaRaca);
                     ctx.SaveChanges();
@@ -38,7 +38,7 @@ namespace CRUDGame
             List<Raca> racas = null;
             try
             {
-                using (var ctx = new RPGDBEntities())
+                using (var ctx = new RPGDBEntities2())
                 {
                     racas = ctx.Racas.OrderBy(
                         x => x.Descricao).ToList();

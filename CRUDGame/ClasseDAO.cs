@@ -12,7 +12,7 @@ namespace CRUDGame
             //Tratamento de erros
             try
             {
-                using (RPGDBEntities ctx = new RPGDBEntities())
+                using (RPGDBEntities2 ctx = new RPGDBEntities2())
                 {
                     //Cadastrando uma nova classe
                     ctx.Classes.Add(novaClasse);
@@ -39,10 +39,10 @@ namespace CRUDGame
         {
             Classe classe = null;
 
-            using (var ctx = new RPGDBEntities())
+            using (var ctx = new RPGDBEntities2())
             {
                 classe = ctx.Classes.FirstOrDefault(
-                        x => x.IdClasse == classeID
+                        x => x.Id == classeID
                     );
             }
             
@@ -58,7 +58,7 @@ namespace CRUDGame
             List<Classe> classes = null;
             try
             {
-                using (var ctx = new RPGDBEntities())
+                using (var ctx = new RPGDBEntities2())
                 {
                     classes = ctx.Classes.OrderBy(
                         x => x.Descricao).ToList();
@@ -74,10 +74,10 @@ namespace CRUDGame
         {
             Classe classe = null;
 
-            using (var ctx = new RPGDBEntities())
+            using (var ctx = new RPGDBEntities2())
             {
                 classe = ctx.Classes.FirstOrDefault(
-                        x => x.IdClasse == idClasse
+                        x => x.Id == idClasse
                      );
                 ctx.Classes.Remove(classe);
                 ctx.SaveChanges();
@@ -91,10 +91,10 @@ namespace CRUDGame
             //Tratamento de erros
             try
             {
-                using (RPGDBEntities ctx = new RPGDBEntities())
+                using (RPGDBEntities2 ctx = new RPGDBEntities2())
                 {
                     Classe classe = ctx.Classes.FirstOrDefault(
-                        x => x.IdClasse == novaClasse.IdClasse
+                        x => x.Id == novaClasse.Id
                      );
 
                     classe.Descricao = novaClasse.Descricao;
