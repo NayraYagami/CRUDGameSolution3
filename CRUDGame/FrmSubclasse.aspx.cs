@@ -35,15 +35,15 @@ namespace CRUDGame
             if (edit)
             {
                 btnConfirmar.Text = "Alterar";
-                if (subclasse != null && subclasse.GetClasse != null)
-                {
-                    PreencherDDLClasse(classes, subclasse.GetClasse.Id);
-                }
             }
             else
             {
                 btnConfirmar.Visible = false;
                 txtDescricao.Enabled = false;
+            }
+            if (subclasse != null && subclasse.GetClasse != null)
+            {
+                PreencherDDLClasse(classes, subclasse.GetClasse.Id);
             }
         }
 
