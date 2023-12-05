@@ -33,6 +33,51 @@
             </p>
         </fieldset>
 
+        <h2>Habilidades cadastradas</h2>
+
+        <table border="1" class="tabela">
+            <tr>
+                <th>Código</th>
+                <th>Descrição</th>
+                <th>Ações</th>
+            </tr>
+
+            <asp:ListView runat="server" ID="lvHabilidades" OnItemCommand="lvHabilidades_ItemCommand">
+                <ItemTemplate>
+                    <tr>
+                        <td>
+                            <%# Eval("Id") %>
+                        </td>
+                        <td>
+                            <%# Eval("Descricao") %>
+                        </td>
+                        <td>
+                            <asp:ImageButton ID="btnVisualizar"
+                                runat="server"
+                                ImageUrl="img/view.svg" 
+                                CommandName="Visualizar"
+                                CommandArgument='<%# Eval("Id") %>'
+                                />
+                            <asp:ImageButton ID="btnEditar" 
+                                runat="server" 
+                                ImageUrl="img/edit.svg" 
+                                CommandName="Editar"
+                                CommandArgument='<%# Eval("Id") %>'
+                                />
+                            <asp:ImageButton ID="btnDeletar"
+                                runat="server"
+                                ImageUrl="img/delete.svg"
+                                CommandName="Excluir"
+                                CommandArgument='<%# Eval("Id") %>' 
+                                OnClientClick="return confirm('Deseja realmente excluir essa habilidade?');"
+                                />
+                        </td>
+                    </tr>
+
+                </ItemTemplate>
+            </asp:ListView>
+        </table>
+
     </form>
 </body>
 </html>

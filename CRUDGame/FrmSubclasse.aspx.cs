@@ -12,11 +12,54 @@ namespace CRUDGame
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
-            {                
+            {
                 List<Classe> classes = ClasseDAO.ListarClasses();
                 PreencherDDLClasse(classes);
+                var queryString_ID = Request.QueryString["id"];
+                var queryString_Edit = Request.QueryString["edit"];
+
+                if (queryString_ID != null && queryString_Edit != null)
+                {
+                    int id = Convert.ToInt32(queryString_ID);
+                    PreencherDados(id, queryString_Edit == "true", classes);
+                }
                 PopularLVs();
             }
+        }
+
+        private void PreencherDados(int id, bool edit, List<Classe> classes)
+        {
+            Subclasse subclasse = SubclasseDAO.ListarSubClasses(id);
+            txtDescricao.Text = subclasse.Descricao;
+
+            if (edit)
+            {
+                btnConfirmar.Text = "Alterar";
+                if (subclasse != null && subclasse.GetClasse != null)
+                {
+                    PreencherDDLClasse(classes, subclasse.GetClasse.Id);
+                }
+            }
+            else
+            {
+                btnConfirmar.Visible = false;
+                txtDescricao.Enabled = false;
+            }
+        }
+
+        private void PreencherDDLClasse(List<Classe> classes, int classeIdSelecionada = -1)
+        {
+            DDLClasse.DataSource = classes;
+            DDLClasse.DataTextField = "Descricao";
+            DDLClasse.DataValueField = "Id";
+            DDLClasse.DataBind();
+
+            if (classeIdSelecionada != -1)
+            {
+                DDLClasse.Items.FindByValue(classeIdSelecionada.ToString()).Selected = true;
+            }
+
+            DDLClasse.Items.Insert(0, "Selecione..");
         }
 
         private void PopularLVs()
@@ -30,7 +73,7 @@ namespace CRUDGame
         {
             DDLClasse.DataSource = classes;
             DDLClasse.DataTextField = "Descricao";
-            DDLClasse.DataValueField = "IdClasse";
+            DDLClasse.DataValueField = "Id";
             DDLClasse.DataBind();
             DDLClasse.Items.Insert(0, "Selecione..");
         }
@@ -42,7 +85,7 @@ namespace CRUDGame
 
             if (index == 0)
             {
-                lblMensagem.InnerText = 
+                lblMensagem.InnerText =
                     "Você precisa selecionar uma classe!";
             }
             else if (descricao != "")
@@ -55,7 +98,7 @@ namespace CRUDGame
                 //Capturando o id da Classe dessa subclasse
                 int idClasse = Convert.ToInt32(
                     DDLClasse.SelectedValue);
-                novaSubclasse.ClasseID = idClasse;
+                novaSubclasse.ClasseId = idClasse;
 
                 string mensagem =
                     SubclasseDAO.CadastrarSubclasse(novaSubclasse);
@@ -69,10 +112,10 @@ namespace CRUDGame
 
         protected void lvSubclasses_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
-            if(e.CommandName == "Excluir")
+            if (e.CommandName == "Excluir")
             {
                 var id = e.CommandArgument;
-                if(id != null)
+                if (id != null)
                 {
                     int idSubclasse = Convert.ToInt32(id);
                     Subclasse subExcluida =
@@ -84,6 +127,22 @@ namespace CRUDGame
                             " excluída com sucesso!";
                         PopularLVs();
                     }
+                }
+            }
+            else if (e.CommandName == "Visualizar")
+            {
+                var id = e.CommandArgument;
+                if (id != null)
+                {
+                    Response.Redirect("~/SubClasses?id=" + id + "&edit=false");
+                }
+            }
+            else if (e.CommandName == "Editar")
+            {
+                var id = e.CommandArgument;
+                if (id != null)
+                {
+                    Response.Redirect("~/SubClasses?id=" + id + "&edit=true");
                 }
             }
         }

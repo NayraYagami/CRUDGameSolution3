@@ -11,7 +11,7 @@ namespace CRUDGame
             List<Atributo> atributos = null;
             try
             {
-                using (var ctx = new RPGDBEntities1())
+                using (var ctx = new RPGDBEntities2())
                 {
                     atributos = ctx.Atributoes.ToList();
                 }

@@ -46,7 +46,7 @@
                 <ItemTemplate>
                     <tr>
                         <td>
-                            <%# Eval("IdClasse") %>
+                            <%# Eval("Id") %>
                         </td>
                         <td>
                             <%# Eval("Descricao") %>
@@ -56,19 +56,19 @@
                                 runat="server"
                                 ImageUrl="img/view.svg" 
                                 CommandName="Visualizar"
-                                CommandArgument='<%# Eval("IdClasse") %>'
+                                CommandArgument='<%# Eval("Id") %>'
                                 />
                             <asp:ImageButton ID="btnEditar" 
                                 runat="server" 
                                 ImageUrl="img/edit.svg" 
                                 CommandName="Editar"
-                                CommandArgument='<%# Eval("IdClasse") %>'
+                                CommandArgument='<%# Eval("Id") %>'
                                 />
                             <asp:ImageButton ID="btnDeletar"
                                 runat="server"
                                 ImageUrl="img/delete.svg"
                                 CommandName="Excluir"
-                                CommandArgument='<%# Eval("IdClasse") %>' 
+                                CommandArgument='<%# Eval("Id") %>' 
                                 OnClientClick="return confirm('Deseja realmente excluir essa classe?');"
                                 />
                         </td>

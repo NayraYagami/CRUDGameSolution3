@@ -30,6 +30,22 @@ namespace CRUDGame
             return mensagem;
         }
 
+        internal static Classe ListarClasseSubClasse(int id)
+        {
+            Subclasse sub = null;
+            Classe classe = null;
+
+            using (var ctx = new RPGDBEntities2())
+            {
+                sub = ctx.Subclasses.FirstOrDefault(
+                        x => x.Id == id
+                    );
+                classe = ListarClasses(Convert.ToInt32(sub.ClasseId));
+            }
+
+            return classe;
+        }
+
         /// <summary>
         /// Retorna uma classe, de acordo com o id.
         /// </summary>

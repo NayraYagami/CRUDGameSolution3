@@ -21,7 +21,7 @@
 
             <p>
                 <label>Subclasse:</label>
-                <asp:TextBox runat="server" ID="txtDescricao"/>
+                <asp:TextBox runat="server" ID="txtDescricao" />
             </p>
             <p>
                 <label>Selecione uma classe: </label>
@@ -38,7 +38,7 @@
             </p>
         </fieldset>
 
-   
+
         <h2>SubClasses cadastradas</h2>
 
         <table border="1" class="tabela">
@@ -52,19 +52,26 @@
             <asp:ListView runat="server" ID="lvSubclasses" OnItemCommand="lvSubclasses_ItemCommand">
                 <ItemTemplate>
                     <tr>
-                        <td><%# Eval("IdSubclasse") %></td>
+                        <td><%# Eval("Id") %></td>
                         <td><%# Eval("Descricao") %></td>
                         <td><%# Eval("GetClasse.Descricao") %></td>
                         <td>
-                            <asp:ImageButton ID="btnVisualizar" runat="server" ImageUrl="img/view.svg" />
-                            <asp:ImageButton ID="btnEditar" runat="server" ImageUrl="img/edit.svg" />
-                            <asp:ImageButton ID="btnDeletar" 
-                                runat="server" 
-                                ImageUrl="img/delete.svg" 
+                            <asp:ImageButton ID="btnEditar"
+                                runat="server"
+                                ImageUrl="img/edit.svg"
+                                CommandName="Editar"
+                                CommandArgument='<%# Eval("Id") %>' />
+                            <asp:ImageButton ID="btnVisualizar"
+                                runat="server"
+                                ImageUrl="img/view.svg"
+                                CommandName="Visualizar"
+                                CommandArgument='<%# Eval("Id") %>' />
+                            <asp:ImageButton ID="btnDeletar"
+                                runat="server"
+                                ImageUrl="img/delete.svg"
                                 CommandName="Excluir"
-                                CommandArgument='<%# Eval("IdSubclasse") %>'
-                                OnClientClick="return confirm('Deseja realmente excluir essa sub classe?');"
-                              />
+                                CommandArgument='<%# Eval("Id") %>'
+                                OnClientClick="return confirm('Deseja realmente excluir essa sub SubClasse?');" />
                         </td>
                     </tr>
                 </ItemTemplate>

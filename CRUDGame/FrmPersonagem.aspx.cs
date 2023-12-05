@@ -23,12 +23,10 @@ namespace CRUDGame
             {
                 List<Raca> racas = RacaDAO.ListarRacas();
                 List<Subclasse> subClasses = SubclasseDAO.ListarSubclasses();
-                List<Aparencia> aparencias = AparenciaDAO.ListarAparencias();
                 List<Atributo> atributos = AtributoDAO.ListarAtributos();
 
                 PopularDDLRaca(racas);
                 PopularDDlSubclasse(subClasses);
-                PopularDDlAparencia(aparencias);
                 PopularDDlAtributo(atributos);
 
             }
@@ -42,25 +40,16 @@ namespace CRUDGame
         {
             ddlAtributo.DataSource = atributos;
             ddlAtributo.DataTextField = "Carisma";
-            ddlAtributo.DataValueField = "IdAtributo";
+            ddlAtributo.DataValueField = "Id";
             ddlAtributo.DataBind();
             ddlAtributo.Items.Insert(0, "Selecione..");
-        }
-
-        private void PopularDDlAparencia(List<Aparencia> aparencias)
-        {
-            ddlAparencia.DataSource = aparencias;
-            ddlAparencia.DataTextField = "Altura";
-            ddlAparencia.DataValueField = "IdAparencia";
-            ddlAparencia.DataBind();
-            ddlAparencia.Items.Insert(0, "Selecione..");
         }
 
         private void PopularDDlSubclasse(List<Subclasse> subClasses)
         {
             ddlSubclasse.DataSource = subClasses;
             ddlSubclasse.DataTextField = "Descricao";
-            ddlSubclasse.DataValueField = "IdSubclasse";
+            ddlSubclasse.DataValueField = "Id";
             ddlSubclasse.DataBind();
             ddlSubclasse.Items.Insert(0, "Selecione..");
         }
@@ -69,7 +58,7 @@ namespace CRUDGame
         {
             ddlRaca.DataSource = racas;
             ddlRaca.DataTextField = "Descricao";
-            ddlRaca.DataValueField = "IdRaca";
+            ddlRaca.DataValueField = "Id";
             ddlRaca.DataBind();
             ddlRaca.Items.Insert(0, "Selecione..");
         }

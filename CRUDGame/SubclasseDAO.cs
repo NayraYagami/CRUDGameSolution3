@@ -44,6 +44,20 @@ namespace CRUDGame
             return subClasses;
         }
 
+        internal static Subclasse ListarSubClasses(int id)
+        {
+            Subclasse subClasse = null;
+
+            using (var ctx = new RPGDBEntities2())
+            {
+                subClasse = ctx.Subclasses.FirstOrDefault(
+                        x => x.Id == id
+                    );
+            }
+
+            return subClasse;
+        }
+
         public static Subclasse Remover(int idSubclasse)
         {
             Subclasse sub = null;

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace CRUDGame
 {
@@ -43,6 +45,54 @@ namespace CRUDGame
             }
 
             return mensagem;
+        }
+
+        internal static Habilidade ListarHabilidades(int id)
+        {
+            {
+                Habilidade habilidade = null;
+
+                using (var ctx = new RPGDBEntities2())
+                {
+                    habilidade = ctx.Habilidades.FirstOrDefault(
+                            x => x.Id == id
+                        );
+                }
+
+                return habilidade;
+            }
+        }
+
+        internal static Habilidade Remover(int idHabilidade)
+        {
+            Habilidade habilidade = null;
+
+            using (var ctx = new RPGDBEntities2())
+            {
+                habilidade = ctx.Habilidades.FirstOrDefault(
+                        x => x.Id == idHabilidade
+                     );
+                ctx.Habilidades.Remove(habilidade);
+                ctx.SaveChanges();
+            }
+            return habilidade;
+        }
+
+        internal static object ListarHabilidades()
+        {
+            List<Habilidade> habilidades = null;
+            try
+            {
+                using (var ctx = new RPGDBEntities2())
+                {
+                    habilidades = ctx.Habilidades.OrderBy(
+                        x => x.Descricao).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return habilidades;
         }
     }
 }

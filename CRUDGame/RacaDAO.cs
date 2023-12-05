@@ -33,6 +33,20 @@ namespace CRUDGame
             return mensagem;
         }
 
+        internal static Raca ListarRacas(int id)
+        {
+            Raca raca = null;
+
+            using (var ctx = new RPGDBEntities2())
+            {
+                raca = ctx.Racas.FirstOrDefault(
+                        x => x.Id == id
+                    );
+            }
+
+            return raca;
+        }
+
         internal static List<Raca> ListarRacas()
         {
             List<Raca> racas = null;
@@ -48,6 +62,46 @@ namespace CRUDGame
             {
             }
             return racas;
+        }
+
+        internal static Raca Remover(int idRaca)
+        {
+            Raca raca = null;
+
+            using (var ctx = new RPGDBEntities2())
+            {
+                raca = ctx.Racas.FirstOrDefault(
+                        x => x.Id == idRaca
+                     );
+                ctx.Racas.Remove(raca);
+                ctx.SaveChanges();
+            }
+            return raca;
+        }
+
+        internal static string AlterarRaca(Raca novaRaca)
+        {
+            string mensagem = "";
+            try
+            {
+                using (RPGDBEntities2 ctx = new RPGDBEntities2())
+                {
+                    Raca raca = ctx.Racas.FirstOrDefault(
+                        x => x.Id == novaRaca.Id
+                     );
+
+                    raca.Descricao = novaRaca.Descricao;
+                    ctx.SaveChanges();
+
+                    mensagem = "Raca " + novaRaca.Descricao + " alterada com sucesso!";
+                }
+            }
+            catch (Exception ex)
+            {
+                mensagem = ex.Message;
+            }
+
+            return mensagem;
         }
     }
 }

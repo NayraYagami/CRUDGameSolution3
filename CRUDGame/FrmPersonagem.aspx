@@ -52,12 +52,6 @@
             </p>
 
             <p>
-                <%--Precisaremos rever e refatorar a aparência--%>
-                <label>Aparência:</label>
-                <asp:DropDownList runat="server" ID="ddlAparencia">
-                </asp:DropDownList>
-            </p>
-            <p>
                 <label>Atributo:</label>
                 <asp:DropDownList runat="server" ID="ddlAtributo">
                 </asp:DropDownList>
