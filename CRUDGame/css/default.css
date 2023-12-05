@@ -1,0 +1,45 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap');
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0;
+    background-color: #FAFAFA;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+    font-size: 4em;
+    margin: 0 auto;
+    background-color: #EFF8FB;
+    color: #0B4C5F;
+}
+
+.aspNetHidden {
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    display: grid;
+    justify-items: center;
+    padding: 1em;
+}
+
+a {
+    padding: 1em;
+    margin: 5px;
+    font-size: 30px;
+    text-decoration: none;
+    color: #086A87;
+    transition: transform .3s;
+    border: 1px solid;
+    border-radius: 50px;
+}
+
+    a:hover {
+        transform: scale(1.1);
+        color: white;
+        background-color: #086A87;
+    }
