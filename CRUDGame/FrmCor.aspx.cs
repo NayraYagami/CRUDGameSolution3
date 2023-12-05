@@ -45,6 +45,8 @@ namespace CRUDGame
         {
             if (e.CommandName == "Excluir")
             {
+                txtDescricao.Text = "";
+                btnConfirmar.Text = "Cadastrar";
                 var id = e.CommandArgument;
                 if (id != null)
                 {

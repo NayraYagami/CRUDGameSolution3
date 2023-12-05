@@ -114,6 +114,9 @@ namespace CRUDGame
         {
             if (e.CommandName == "Excluir")
             {
+                txtDescricao.Text = "";
+                btnConfirmar.Text = "Cadastrar";
+                DDLClasse.SelectedIndex = 0;
                 var id = e.CommandArgument;
                 if (id != null)
                 {

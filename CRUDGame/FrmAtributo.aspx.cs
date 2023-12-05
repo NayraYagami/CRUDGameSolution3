@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace CRUDGame
 {
-    public partial class FrmRaca : System.Web.UI.Page
+    public partial class FrmAtributo : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,8 +27,8 @@ namespace CRUDGame
 
         private void PreencherDados(int id, bool edit)
         {
-            var raca = RacaDAO.ListarRacas(id);
-            txtDescricao.Text = raca.Descricao;
+            var atributo = AtributoDAO.ListarAtributos(id);
+            txtDescricao.Text = atributo.Descricao;
 
             if (edit)
             {
@@ -48,12 +48,13 @@ namespace CRUDGame
 
             if (descricao != "")
             {
-                Raca novaRaca = null;
+                Atributo novoAtributo = null;
+
                 int id = -1;
 
                 if (cadastrando)
                 {
-                    novaRaca = new Raca();
+                    novoAtributo = new Atributo();
                 }
                 else
                 {
@@ -61,34 +62,46 @@ namespace CRUDGame
                     if (idQuery != null)
                     {
                         id = Convert.ToInt32(idQuery);
-                        novaRaca = RacaDAO.ListarRacas(id);
+                        novoAtributo = AtributoDAO.ListarAtributos(id);
                     }
                 }
-
-                novaRaca.Descricao = descricao;
+                //Preencher o objeto
+                novoAtributo.Descricao = descricao;
 
 
                 string mensagem = "";
 
                 if (cadastrando)
                 {
-                    mensagem = RacaDAO.CadastrarRaca(novaRaca);
+                    mensagem = AtributoDAO.CadastrarAtributo(novoAtributo);
                 }
                 else
                 {
-                    mensagem = RacaDAO.AlterarRaca(novaRaca);
+                    mensagem = AtributoDAO.AlterarAtributo(novoAtributo);
                     btnConfirmar.Text = "Cadastrar";
                 }
 
+                //Limpando o campo de texto
                 txtDescricao.Text = "";
 
                 lblMensagem.InnerText = mensagem;
                 PopularLVs();
             }
-
         }
 
-        protected void lvRacas_ItemCommand(object sender, ListViewCommandEventArgs e)
+        private void PopularLVs()
+        {
+            var atributos = AtributoDAO.ListarAtributos();
+            PopularLVAtributos(atributos);
+        }
+
+        private void PopularLVAtributos(List<Atributo> atributos)
+        {
+            lvAtributos.DataSource = atributos;
+            lvAtributos.DataBind();
+        }
+
+        protected void lvAtributos_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
             if (e.CommandName == "Excluir")
             {
@@ -97,14 +110,14 @@ namespace CRUDGame
                 var id = e.CommandArgument;
                 if (id != null)
                 {
-                    int idRaca = Convert.ToInt32(id);
-                    Raca racaExcluida =
-                        RacaDAO.Remover(idRaca);
-                    if (racaExcluida != null)
+                    int idAtributo = Convert.ToInt32(id);
+                    Atributo atributoExcluido =
+                        AtributoDAO.Remover(idAtributo);
+                    if (atributoExcluido != null)
                     {
-                        lblMensagem.InnerText = "Raca " +
-                            racaExcluida.Descricao +
-                            " excluída com sucesso!";
+                        lblMensagem.InnerText = "Atributo " +
+                            atributoExcluido.Descricao +
+                            " excluído com sucesso!";
                         PopularLVs();
                     }
                 }
@@ -114,7 +127,7 @@ namespace CRUDGame
                 var id = e.CommandArgument;
                 if (id != null)
                 {
-                    Response.Redirect("~/Racas?id=" + id + "&edit=false");
+                    Response.Redirect("~/Atributos?id=" + id + "&edit=false");
                 }
             }
             else if (e.CommandName == "Editar")
@@ -122,21 +135,9 @@ namespace CRUDGame
                 var id = e.CommandArgument;
                 if (id != null)
                 {
-                    Response.Redirect("~/Racas?id=" + id + "&edit=true");
+                    Response.Redirect("~/Atributos?id=" + id + "&edit=true");
                 }
             }
-        }
-
-        private void PopularLVs()
-        {
-            var racas = RacaDAO.ListarRacas();
-            PopularLVRacas(racas);
-        }
-
-        private void PopularLVRacas(List<Raca> racas)
-        {
-            lvRacas.DataSource = racas;
-            lvRacas.DataBind();
         }
     }
 }

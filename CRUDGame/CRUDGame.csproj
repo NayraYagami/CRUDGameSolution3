@@ -81,6 +81,7 @@
     </Content>
     <Content Include="css\style.css" />
     <Content Include="Default.aspx" />
+    <Content Include="FrmAtributo.aspx" />
     <Content Include="FrmClasse.aspx" />
     <Content Include="FrmCor.aspx" />
     <Content Include="FrmError.aspx" />
@@ -122,6 +123,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAtributo.aspx.cs">
+      <DependentUpon>FrmAtributo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmAtributo.aspx.designer.cs">
+      <DependentUpon>FrmAtributo.aspx</DependentUpon>
     </Compile>
     <Compile Include="FrmClasse.aspx.cs">
       <DependentUpon>FrmClasse.aspx</DependentUpon>
