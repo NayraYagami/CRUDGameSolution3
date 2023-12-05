@@ -82,6 +82,7 @@
     <Content Include="css\style.css" />
     <Content Include="Default.aspx" />
     <Content Include="FrmClasse.aspx" />
+    <Content Include="FrmCor.aspx" />
     <Content Include="FrmError.aspx" />
     <Content Include="FrmHabilidade.aspx" />
     <Content Include="FrmPersonagem.aspx" />
@@ -114,6 +115,7 @@
     <Compile Include="Cor.cs">
       <DependentUpon>RPGModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CorDAO.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -127,6 +129,13 @@
     </Compile>
     <Compile Include="FrmClasse.aspx.designer.cs">
       <DependentUpon>FrmClasse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCor.aspx.cs">
+      <DependentUpon>FrmCor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmCor.aspx.designer.cs">
+      <DependentUpon>FrmCor.aspx</DependentUpon>
     </Compile>
     <Compile Include="FrmError.aspx.cs">
       <DependentUpon>FrmError.aspx</DependentUpon>

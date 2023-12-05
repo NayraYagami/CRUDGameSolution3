@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
 </head>
 <body>
@@ -15,6 +15,7 @@
             <a runat="server" href="~/Racas">Gerenciar Raças</a>
             <a runat="server" href="~/Habilidades">Gerenciar Habilidades</a>
             <a runat="server" href="~/Subclasses">Gerenciar Subclasses</a>
+            <a runat="server" href="~/Cores">Gerenciar Cores</a>
         </div>
     </form>
 </body>

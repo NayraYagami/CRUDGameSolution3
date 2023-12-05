@@ -54,6 +54,8 @@ namespace CRUDGame
                     HabilidadeDAO.CadastrarHabilidade(novaHabilidade);
                 txtDescricao.Text = "";
 
+                PopularLVs();
+
                 lblMensagem.InnerText = mensagem;
             }
         }
