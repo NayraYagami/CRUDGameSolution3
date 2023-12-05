@@ -21,7 +21,7 @@ namespace CRUDGame
             return cor;
         }
 
-        internal static object ListarCores()
+        internal static List<Cor> ListarCores()
         {
             List<Cor> cores = null;
             try

@@ -40,6 +40,10 @@
       <End Role="Subclasse" EntitySet="Subclasses" />
       <End Role="Personagem" EntitySet="Personagems" />
     </AssociationSet>
+    <AssociationSet Name="FK_Personagem_Atributo" Association="RPGDBModel.FK_Personagem_Atributo">
+      <End Role="Atributo" EntitySet="Atributoes" />
+      <End Role="Personagem" EntitySet="Personagems" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Atributo">
     <Key>
@@ -47,6 +51,7 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Descricao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Personagems" Relationship="RPGDBModel.FK_Personagem_Atributo" FromRole="Atributo" ToRole="Personagem" />
   </EntityType>
   <EntityType Name="Classe">
     <Key>
@@ -107,6 +112,8 @@
     <NavigationProperty Name="Habilidade" Relationship="RPGDBModel.FK__Personage__Habil__440B1D61" FromRole="Personagem" ToRole="Habilidade" />
     <NavigationProperty Name="Raca" Relationship="RPGDBModel.FK__Personage__RacaI__44FF419A" FromRole="Personagem" ToRole="Raca" />
     <NavigationProperty Name="Subclasse" Relationship="RPGDBModel.FK__Personage__Subcl__45F365D3" FromRole="Personagem" ToRole="Subclasse" />
+    <Property Name="AtributoId" Type="Int32" />
+    <NavigationProperty Name="Atributo" Relationship="RPGDBModel.FK_Personagem_Atributo" FromRole="Personagem" ToRole="Atributo" />
   </EntityType>
   <EntityType Name="Raca">
     <Key>
@@ -219,6 +226,18 @@
       </Principal>
       <Dependent Role="Personagem">
         <PropertyRef Name="SubclasseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personagem_Atributo">
+    <End Type="RPGDBModel.Atributo" Role="Atributo" Multiplicity="0..1" />
+    <End Type="RPGDBModel.Personagem" Role="Personagem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Atributo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Personagem">
+        <PropertyRef Name="AtributoId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

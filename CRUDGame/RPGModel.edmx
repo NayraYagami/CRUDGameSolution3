@@ -58,6 +58,7 @@
           <Property Name="EstiloCabelo" Type="varchar" MaxLength="50" />
           <Property Name="CorOlhoId" Type="int" />
           <Property Name="CorPeleId" Type="int" />
+          <Property Name="AtributoId" Type="int" />
         </EntityType>
         <EntityType Name="Raca">
           <Key>
@@ -170,6 +171,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Personagem_Atributo">
+          <End Role="Atributo" Type="Self.Atributo" Multiplicity="0..1" />
+          <End Role="Personagem" Type="Self.Personagem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Atributo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Personagem">
+              <PropertyRef Name="AtributoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="RPGDBModelStoreContainer">
           <EntitySet Name="Atributo" EntityType="Self.Atributo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Classe" EntityType="Self.Classe" Schema="dbo" store:Type="Tables" />
@@ -209,6 +222,10 @@
           <AssociationSet Name="FK__Subclasse__Class__38996AB5" Association="Self.FK__Subclasse__Class__38996AB5">
             <End Role="Classe" EntitySet="Classe" />
             <End Role="Subclasse" EntitySet="Subclasse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personagem_Atributo" Association="Self.FK_Personagem_Atributo">
+            <End Role="Atributo" EntitySet="Atributo" />
+            <End Role="Personagem" EntitySet="Personagem" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -255,6 +272,10 @@
             <End Role="Subclasse" EntitySet="Subclasses" />
             <End Role="Personagem" EntitySet="Personagems" />
           </AssociationSet>
+          <AssociationSet Name="FK_Personagem_Atributo" Association="RPGDBModel.FK_Personagem_Atributo">
+            <End Role="Atributo" EntitySet="Atributoes" />
+            <End Role="Personagem" EntitySet="Personagems" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Atributo">
           <Key>
@@ -262,6 +283,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descricao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Personagems" Relationship="RPGDBModel.FK_Personagem_Atributo" FromRole="Atributo" ToRole="Personagem" />
         </EntityType>
         <EntityType Name="Classe">
           <Key>
@@ -322,6 +344,8 @@
           <NavigationProperty Name="Habilidade" Relationship="RPGDBModel.FK__Personage__Habil__440B1D61" FromRole="Personagem" ToRole="Habilidade" />
           <NavigationProperty Name="Raca" Relationship="RPGDBModel.FK__Personage__RacaI__44FF419A" FromRole="Personagem" ToRole="Raca" />
           <NavigationProperty Name="Subclasse" Relationship="RPGDBModel.FK__Personage__Subcl__45F365D3" FromRole="Personagem" ToRole="Subclasse" />
+          <Property Name="AtributoId" Type="Int32" />
+          <NavigationProperty Name="Atributo" Relationship="RPGDBModel.FK_Personagem_Atributo" FromRole="Personagem" ToRole="Atributo" />
         </EntityType>
         <EntityType Name="Raca">
           <Key>
@@ -437,6 +461,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Personagem_Atributo">
+          <End Type="RPGDBModel.Atributo" Role="Atributo" Multiplicity="0..1" />
+          <End Type="RPGDBModel.Personagem" Role="Personagem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Atributo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Personagem">
+              <PropertyRef Name="AtributoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -479,6 +515,7 @@
           <EntitySetMapping Name="Personagems">
             <EntityTypeMapping TypeName="RPGDBModel.Personagem">
               <MappingFragment StoreEntitySet="Personagem">
+                <ScalarProperty Name="AtributoId" ColumnName="AtributoId" />
                 <ScalarProperty Name="CorPeleId" ColumnName="CorPeleId" />
                 <ScalarProperty Name="CorOlhoId" ColumnName="CorOlhoId" />
                 <ScalarProperty Name="EstiloCabelo" ColumnName="EstiloCabelo" />

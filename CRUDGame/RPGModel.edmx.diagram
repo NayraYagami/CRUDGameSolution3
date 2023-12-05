@@ -20,6 +20,7 @@
         <AssociationConnector Association="RPGDBModel.FK__Personage__Habil__440B1D61" />
         <AssociationConnector Association="RPGDBModel.FK__Personage__RacaI__44FF419A" />
         <AssociationConnector Association="RPGDBModel.FK__Personage__Subcl__45F365D3" />
+        <AssociationConnector Association="RPGDBModel.FK_Personagem_Atributo" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

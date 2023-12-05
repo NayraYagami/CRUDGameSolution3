@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Gerenciar Personagens</title>
 </head>
 <body>
@@ -15,28 +15,13 @@
         </div>
 
         <fieldset>
-            <legend>
-                Criar novo personagem
+            <legend>Criar novo personagem
             </legend>
 
             <p>
-                <label>Nome do Personagem:</label>
-                <asp:TextBox runat="server" id="txtNome" />
-            </p>
-
-            <p>
-                <label>Data de nascimento:</label>
-                <asp:TextBox runat="server" id="txtDataNasc" TextMode="Date" />
-            </p>
-
-            <p>
-                <label>Nível:</label>
-                <asp:TextBox runat="server" id="txtNivel"/>
-            </p>
-
-            <p>
-                <label>Sexo:</label>
-                <asp:TextBox runat="server" id="txtSexo"/>
+                <label>Habilidade:</label>
+                <asp:DropDownList runat="server" ID="ddlHabilidade">
+                </asp:DropDownList>
             </p>
 
             <p>
@@ -52,8 +37,91 @@
             </p>
 
             <p>
+                <label>Nível:</label>
+                <asp:TextBox runat="server" ID="txtNivel" />
+            </p>
+
+            <p>
+                <label>Nome do Personagem:</label>
+                <asp:TextBox runat="server" ID="txtNome" />
+            </p>
+
+            <p>
+                <label>Data de nascimento:</label>
+                <asp:TextBox runat="server" ID="txtDataNasc" TextMode="Date" />
+            </p>
+
+            <p>
                 <label>Atributo:</label>
                 <asp:DropDownList runat="server" ID="ddlAtributo">
+                </asp:DropDownList>
+            </p>
+
+            <p>
+                <label>Sexo:</label>
+                <asp:TextBox runat="server" ID="txtSexo" />
+            </p>
+
+            <p>
+                <label>Força:</label>
+                <asp:TextBox runat="server" ID="txtForca" />
+            </p>
+
+            <p>
+                <label>Destreza:</label>
+                <asp:TextBox runat="server" ID="txtDestreza" />
+            </p>
+
+            <p>
+                <label>Sabedoria:</label>
+                <asp:TextBox runat="server" ID="txtSabedoria" />
+            </p>
+
+            <p>
+                <label>Constituição :</label>
+                <asp:TextBox runat="server" ID="txtConstituicao" />
+            </p>
+
+            <p>
+                <label>Inteligência :</label>
+                <asp:TextBox runat="server" ID="txtInteligencia" />
+            </p>
+
+            <p>
+                <label>Carisma :</label>
+                <asp:TextBox runat="server" ID="txtCarisma" />
+            </p>
+
+            <p>
+                <label>Peso :</label>
+                <asp:TextBox runat="server" ID="txtPeso" />
+            </p>
+
+            <p>
+                <label>Altura:</label>
+                <asp:TextBox runat="server" ID="txtAltura" />
+            </p>
+
+            <p>
+                <label>Cor Cabelo:</label>
+                <asp:DropDownList runat="server" ID="ddlCorCabelo">
+                </asp:DropDownList>
+            </p>
+
+            <p>
+                <label>Estilo Cabelo:</label>
+                <asp:TextBox runat="server" ID="txtEstiloCabelo" />
+            </p>
+
+            <p>
+                <label>Cor dos Olhos:</label>
+                <asp:DropDownList runat="server" ID="ddlCorOlhos">
+                </asp:DropDownList>
+            </p>
+
+            <p>
+                <label>Cor da Pele:</label>
+                <asp:DropDownList runat="server" ID="ddlCorPele">
                 </asp:DropDownList>
             </p>
 
@@ -63,9 +131,9 @@
             </p>
 
             <p>
-                <asp:Button Text="Cadastrar" 
-                    runat="server" 
-                    ID="btnConfirmar" OnClick="btnConfirmar_Click"/>
+                <asp:Button Text="Cadastrar"
+                    runat="server"
+                    ID="btnConfirmar" OnClick="btnConfirmar_Click1" />
             </p>
             <p>
                 <label id="lblMensagem" runat="server"></label>

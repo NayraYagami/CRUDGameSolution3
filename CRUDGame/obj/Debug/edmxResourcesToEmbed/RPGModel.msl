@@ -37,6 +37,7 @@
     <EntitySetMapping Name="Personagems">
       <EntityTypeMapping TypeName="RPGDBModel.Personagem">
         <MappingFragment StoreEntitySet="Personagem">
+          <ScalarProperty Name="AtributoId" ColumnName="AtributoId" />
           <ScalarProperty Name="CorPeleId" ColumnName="CorPeleId" />
           <ScalarProperty Name="CorOlhoId" ColumnName="CorOlhoId" />
           <ScalarProperty Name="EstiloCabelo" ColumnName="EstiloCabelo" />

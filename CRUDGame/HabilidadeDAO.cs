@@ -78,7 +78,7 @@ namespace CRUDGame
             return habilidade;
         }
 
-        internal static object ListarHabilidades()
+        internal static List<Habilidade> ListarHabilidades()
         {
             List<Habilidade> habilidades = null;
             try
