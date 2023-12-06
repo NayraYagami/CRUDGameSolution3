@@ -78,7 +78,7 @@ INSERT INTO Habilidade (Descricao, CorId) VALUES ('Magia de Fogo', 1);
 INSERT INTO Habilidade (Descricao, CorId) VALUES ('Invisibilidade', 2);
 INSERT INTO Habilidade (Descricao, CorId) VALUES ('Ataque Sorrateiro', 3);
 
-=INSERT INTO Personagem (
+INSERT INTO Personagem (
     HabilidadeId, RacaId, SubclasseId, Nivel, Nome, DataNasc, Sexo,
     Forca, Destreza, Sabedoria, Constituicao, Inteligencia, Carisma,
     Peso, Altura, CorCabeloId, EstiloCabelo, CorOlhoId, CorPeleId
@@ -105,14 +105,6 @@ INSERT INTO Personagem (
     65.8, 1.80, 3, 'Curto', 3, 1
 );
 
-CREATE TABLE [dbo].[LogAcesso] (
-    [IdLogAcesso]    INT      IDENTITY (1, 1) NOT NULL,
-    [UsuarioId]      INT      NOT NULL,
-    [DataHoraAcesso] DATETIME NOT NULL,
-    PRIMARY KEY CLUSTERED ([IdLogAcesso] ASC),
-    CONSTRAINT [FK_LogAcesso_Usuario] FOREIGN KEY ([UsuarioId]) REFERENCES [dbo].[Usuario] ([IdUsuario])
-);
-
 CREATE TABLE [dbo].[PerfilUsuario] (
     [IdPerfilUsuario] INT          IDENTITY (1, 1) NOT NULL,
     [Descricao]       VARCHAR (50) NOT NULL,
@@ -128,4 +120,12 @@ CREATE TABLE [dbo].[Usuario] (
     [PerfilUsuarioId] INT           NOT NULL,
     PRIMARY KEY CLUSTERED ([IdUsuario] ASC),
     CONSTRAINT [FK_Usuario_PerfilUsuario] FOREIGN KEY ([PerfilUsuarioId]) REFERENCES [dbo].[PerfilUsuario] ([IdPerfilUsuario])
+);
+
+CREATE TABLE [dbo].[LogAcesso] (
+    [IdLogAcesso]    INT      IDENTITY (1, 1) NOT NULL,
+    [UsuarioId]      INT      NOT NULL,
+    [DataHoraAcesso] DATETIME NOT NULL,
+    PRIMARY KEY CLUSTERED ([IdLogAcesso] ASC),
+    CONSTRAINT [FK_LogAcesso_Usuario] FOREIGN KEY ([UsuarioId]) REFERENCES [dbo].[Usuario] ([IdUsuario])
 );
