@@ -27,6 +27,21 @@
           <Property Name="Descricao" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CorId" Type="int" />
         </EntityType>
+        <EntityType Name="LogAcesso">
+          <Key>
+            <PropertyRef Name="IdLogAcesso" />
+          </Key>
+          <Property Name="IdLogAcesso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" Nullable="false" />
+          <Property Name="DataHoraAcesso" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PerfilUsuario">
+          <Key>
+            <PropertyRef Name="IdPerfilUsuario" />
+          </Key>
+          <Property Name="IdPerfilUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Personagem">
           <Key>
             <PropertyRef Name="Id" />
@@ -66,6 +81,17 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descricao" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ClasseId" Type="int" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Senha" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="DataNasc" Type="datetime" Nullable="false" />
+          <Property Name="PerfilUsuarioId" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK__Habilidad__CorId__3F466844">
           <End Role="Cor" Type="Self.Cor" Multiplicity="0..1" />
@@ -163,13 +189,40 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_LogAcesso_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="LogAcesso" Type="Self.LogAcesso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="LogAcesso">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_PerfilUsuario">
+          <End Role="PerfilUsuario" Type="Self.PerfilUsuario" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PerfilUsuario">
+              <PropertyRef Name="IdPerfilUsuario" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="PerfilUsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="RPGDBModelStoreContainer">
           <EntitySet Name="Classe" EntityType="Self.Classe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cor" EntityType="Self.Cor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Habilidade" EntityType="Self.Habilidade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogAcesso" EntityType="Self.LogAcesso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PerfilUsuario" EntityType="Self.PerfilUsuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personagem" EntityType="Self.Personagem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Raca" EntityType="Self.Raca" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subclasse" EntityType="Self.Subclasse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Habilidad__CorId__3F466844" Association="Self.FK__Habilidad__CorId__3F466844">
             <End Role="Cor" EntitySet="Cor" />
             <End Role="Habilidade" EntitySet="Habilidade" />
@@ -201,6 +254,14 @@
           <AssociationSet Name="FK__Subclasse__Class__38996AB5" Association="Self.FK__Subclasse__Class__38996AB5">
             <End Role="Classe" EntitySet="Classe" />
             <End Role="Subclasse" EntitySet="Subclasse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogAcesso_Usuario" Association="Self.FK_LogAcesso_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="LogAcesso" EntitySet="LogAcesso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_PerfilUsuario" Association="Self.FK_Usuario_PerfilUsuario">
+            <End Role="PerfilUsuario" EntitySet="PerfilUsuario" />
+            <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -245,6 +306,17 @@
           <AssociationSet Name="FK__Personage__Subcl__440B1D61" Association="RPGDBModel.FK__Personage__Subcl__440B1D61">
             <End Role="Subclasse" EntitySet="Subclasses" />
             <End Role="Personagem" EntitySet="Personagems" />
+          </AssociationSet>
+          <EntitySet Name="LogAcessoes" EntityType="RPGDBModel.LogAcesso" />
+          <EntitySet Name="PerfilUsuarios" EntityType="RPGDBModel.PerfilUsuario" />
+          <EntitySet Name="Usuarios" EntityType="RPGDBModel.Usuario" />
+          <AssociationSet Name="FK_LogAcesso_Usuario" Association="RPGDBModel.FK_LogAcesso_Usuario">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="LogAcesso" EntitySet="LogAcessoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_PerfilUsuario" Association="RPGDBModel.FK_Usuario_PerfilUsuario">
+            <End Role="PerfilUsuario" EntitySet="PerfilUsuarios" />
+            <End Role="Usuario" EntitySet="Usuarios" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Classe">
@@ -421,6 +493,60 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="LogAcesso">
+          <Key>
+            <PropertyRef Name="IdLogAcesso" />
+          </Key>
+          <Property Name="IdLogAcesso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <Property Name="DataHoraAcesso" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Usuario" Relationship="RPGDBModel.FK_LogAcesso_Usuario" FromRole="LogAcesso" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="PerfilUsuario">
+          <Key>
+            <PropertyRef Name="IdPerfilUsuario" />
+          </Key>
+          <Property Name="IdPerfilUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Usuarios" Relationship="RPGDBModel.FK_Usuario_PerfilUsuario" FromRole="PerfilUsuario" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Senha" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="DataNasc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PerfilUsuarioId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="LogAcessoes" Relationship="RPGDBModel.FK_LogAcesso_Usuario" FromRole="Usuario" ToRole="LogAcesso" />
+          <NavigationProperty Name="PerfilUsuario" Relationship="RPGDBModel.FK_Usuario_PerfilUsuario" FromRole="Usuario" ToRole="PerfilUsuario" />
+        </EntityType>
+        <Association Name="FK_LogAcesso_Usuario">
+          <End Type="RPGDBModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="RPGDBModel.LogAcesso" Role="LogAcesso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="LogAcesso">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_PerfilUsuario">
+          <End Type="RPGDBModel.PerfilUsuario" Role="PerfilUsuario" Multiplicity="1" />
+          <End Type="RPGDBModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PerfilUsuario">
+              <PropertyRef Name="IdPerfilUsuario" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="PerfilUsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -492,6 +618,35 @@
                 <ScalarProperty Name="ClasseId" ColumnName="ClasseId" />
                 <ScalarProperty Name="Descricao" ColumnName="Descricao" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogAcessoes">
+            <EntityTypeMapping TypeName="RPGDBModel.LogAcesso">
+              <MappingFragment StoreEntitySet="LogAcesso">
+                <ScalarProperty Name="DataHoraAcesso" ColumnName="DataHoraAcesso" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="IdLogAcesso" ColumnName="IdLogAcesso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PerfilUsuarios">
+            <EntityTypeMapping TypeName="RPGDBModel.PerfilUsuario">
+              <MappingFragment StoreEntitySet="PerfilUsuario">
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="IdPerfilUsuario" ColumnName="IdPerfilUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="RPGDBModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="PerfilUsuarioId" ColumnName="PerfilUsuarioId" />
+                <ScalarProperty Name="DataNasc" ColumnName="DataNasc" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

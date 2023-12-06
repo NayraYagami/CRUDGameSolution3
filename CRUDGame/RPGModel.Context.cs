@@ -31,5 +31,8 @@ namespace CRUDGame
         public virtual DbSet<Personagem> Personagems { get; set; }
         public virtual DbSet<Raca> Racas { get; set; }
         public virtual DbSet<Subclasse> Subclasses { get; set; }
+        public virtual DbSet<LogAcesso> LogAcessoes { get; set; }
+        public virtual DbSet<PerfilUsuario> PerfilUsuarios { get; set; }
+        public virtual DbSet<Usuario> Usuarios { get; set; }
     }
 }

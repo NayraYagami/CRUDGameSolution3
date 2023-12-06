@@ -40,7 +40,7 @@ namespace CRUDGame
 
                     if (perfil == "Administrador")
                     {
-                        Response.Redirect("~/Administrador/Administrador");
+                        Response.Redirect("~/Administrador/FrmAdministrador.aspx");
                     }
                     else if (perfil == "Gerente")
                     {

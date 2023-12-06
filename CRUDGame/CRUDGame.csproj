@@ -75,6 +75,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Administrador\FrmAdministrador.aspx" />
     <Content Include="App_Data\RPGDB.mdf" />
     <Content Include="App_Data\RPGDB_log.ldf">
       <DependentUpon>RPGDB.mdf</DependentUpon>
@@ -85,7 +86,9 @@
     <Content Include="FrmClasse.aspx" />
     <Content Include="FrmCor.aspx" />
     <Content Include="FrmError.aspx" />
+    <Content Include="FrmGerenciarUsuario.aspx" />
     <Content Include="FrmHabilidade.aspx" />
+    <Content Include="FrmLogin.aspx" />
     <Content Include="FrmPersonagem.aspx" />
     <Content Include="FrmRaca.aspx" />
     <Content Include="FrmSubclasse.aspx" />
@@ -106,6 +109,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrador\FrmAdministrador.aspx.cs">
+      <DependentUpon>FrmAdministrador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\FrmAdministrador.aspx.designer.cs">
+      <DependentUpon>FrmAdministrador.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Classe.cs">
       <DependentUpon>RPGModel.tt</DependentUpon>
     </Compile>
@@ -142,12 +152,26 @@
     <Compile Include="FrmError.aspx.designer.cs">
       <DependentUpon>FrmError.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FrmGerenciarUsuario.aspx.cs">
+      <DependentUpon>FrmGerenciarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmGerenciarUsuario.aspx.designer.cs">
+      <DependentUpon>FrmGerenciarUsuario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FrmHabilidade.aspx.cs">
       <DependentUpon>FrmHabilidade.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FrmHabilidade.aspx.designer.cs">
       <DependentUpon>FrmHabilidade.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.aspx.cs">
+      <DependentUpon>FrmLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.aspx.designer.cs">
+      <DependentUpon>FrmLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="FrmPersonagem.aspx.cs">
       <DependentUpon>FrmPersonagem.aspx</DependentUpon>
@@ -174,6 +198,14 @@
       <DependentUpon>RPGModel.tt</DependentUpon>
     </Compile>
     <Compile Include="HabilidadeDAO.cs" />
+    <Compile Include="LogAcesso.cs">
+      <DependentUpon>RPGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogAcessoDAO.cs" />
+    <Compile Include="PerfilUsuario.cs">
+      <DependentUpon>RPGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PerfilUsuarioDAO.cs" />
     <Compile Include="Personagem.cs">
       <DependentUpon>RPGModel.tt</DependentUpon>
     </Compile>
@@ -203,8 +235,14 @@
     </Compile>
     <Compile Include="SubclasseDAO.cs" />
     <Compile Include="SubclassePOCO.cs" />
+    <Compile Include="Usuario.cs">
+      <DependentUpon>RPGModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UsuarioDAO.cs" />
+    <Compile Include="UsuarioPOCO.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Administrador\Web.config" />
     <None Include="packages.config" />
     <EntityDeploy Include="RPGModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

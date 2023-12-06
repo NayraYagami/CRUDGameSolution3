@@ -30,39 +30,43 @@ namespace CRUDGame
         private void PreencherDados(int id, bool edit)
         {
             var personagem = PersonagemDAO.ListarPersonagens(id);
-            txtNome.Text = personagem.Nome;
-            txtAltura.Text = personagem.Altura.ToString();
-            txtCarisma.Text = personagem.Carisma.ToString();
-            txtDataNasc.Text = personagem.DataNasc != null ? ((DateTime)personagem.DataNasc).ToString("yyyy-MM-dd") : personagem.DataNasc.ToString();
-            txtDestreza.Text = personagem.Destreza.ToString();
-            txtEstiloCabelo.Text = personagem.EstiloCabelo.ToString();
-            txtForca.Text = personagem.Forca.ToString();
-            txtInteligencia.Text = personagem.Inteligencia.ToString();
-            txtNivel.Text = personagem.Nivel.ToString();
-            txtPeso.Text = personagem.Peso.ToString();
-            txtSabedoria.Text = personagem.Sabedoria.ToString();
-            txtSexo.Text = personagem.Sexo.ToString();
-            txtConstituicao.Text = personagem.Constituicao.ToString();
-            fpImagem.Visible = false;
+            if (personagem != null)
+            {
+                txtNome.Text = personagem.Nome;
+                txtAltura.Text = personagem.Altura.ToString();
+                txtCarisma.Text = personagem.Carisma.ToString();
+                txtDataNasc.Text = personagem.DataNasc != null ? ((DateTime)personagem.DataNasc).ToString("yyyy-MM-dd") : personagem.DataNasc.ToString();
+                txtDestreza.Text = personagem.Destreza.ToString();
+                txtEstiloCabelo.Text = personagem.EstiloCabelo.ToString();
+                txtForca.Text = personagem.Forca.ToString();
+                txtInteligencia.Text = personagem.Inteligencia.ToString();
+                txtNivel.Text = personagem.Nivel.ToString();
+                txtPeso.Text = personagem.Peso.ToString();
+                txtSabedoria.Text = personagem.Sabedoria.ToString();
+                txtSexo.Text = personagem.Sexo.ToString();
+                txtConstituicao.Text = personagem.Constituicao.ToString();
 
-            var CorCabelo = CorDAO.ListarCores(Convert.ToInt32(personagem.CorCabeloId));
-            var CorOlhos = CorDAO.ListarCores(Convert.ToInt32(personagem.CorOlhoId));
-            var CorPele = CorDAO.ListarCores(Convert.ToInt32(personagem.CorPeleId));
-            var Habilidade = HabilidadeDAO.ListarHabilidades(Convert.ToInt32(personagem.HabilidadeId));
-            var Raca = RacaDAO.ListarRacas(Convert.ToInt32(personagem.RacaId));
-            var Subclasse = SubclasseDAO.ListarSubclasses(Convert.ToInt32(personagem.SubclasseId));
+                var CorCabelo = CorDAO.ListarCores(Convert.ToInt32(personagem.CorCabeloId));
+                var CorOlhos = CorDAO.ListarCores(Convert.ToInt32(personagem.CorOlhoId));
+                var CorPele = CorDAO.ListarCores(Convert.ToInt32(personagem.CorPeleId));
+                var Habilidade = HabilidadeDAO.ListarHabilidades(Convert.ToInt32(personagem.HabilidadeId));
+                var Raca = RacaDAO.ListarRacas(Convert.ToInt32(personagem.RacaId));
+                var Subclasse = SubclasseDAO.ListarSubclasses(Convert.ToInt32(personagem.SubclasseId));
 
-            preencherDDLs(CorCabelo, CorOlhos, CorPele, Habilidade, Raca, Subclasse);
+                preencherDDLs(CorCabelo, CorOlhos, CorPele, Habilidade, Raca, Subclasse);
+            }
 
             //Verifica se iremos editar os dados ou não
             if (edit)
             {
                 //Editando
+                fpImagem.Visible = false;
                 btnConfirmar.Text = "Alterar";
             }
             else
             {
                 //Visualizando
+                fpImagem.Visible = false;
                 btnConfirmar.Visible = false;
                 txtNome.Enabled = false;
                 txtAltura.Enabled = false;
@@ -86,8 +90,6 @@ namespace CRUDGame
                 string jpgPath = $"~/upload/{id}.jpg";
                 string pngPath = $"~/upload/{id}.png";
                 Image1.ImageUrl = File.Exists(Server.MapPath(jpgPath)) ? jpgPath : pngPath;
-
-
             }
         }
 
@@ -357,30 +359,34 @@ namespace CRUDGame
                 {
                     lblMensagem.InnerText = PersonagemDAO.AlterarPersonagem(personagem);
                     btnConfirmar.Text = "Cadastrar";
+                    fpImagem.Visible = true;
                 }
 
                 limparCampos();
 
                 var arquivo = fpImagem.PostedFile;
-                var tipo = arquivo.ContentType;
-
-                if (tipo.Contains("png"))
+                if (arquivo != null)
                 {
-                    var caminhoAbsoluto = MapPath("~/upload");
-                    var nomeArquivo = personagem.Id + ".png";
-                    var nomeSalvar = caminhoAbsoluto + "\\" + nomeArquivo;
+                    var tipo = arquivo.ContentType;
 
-                    arquivo.SaveAs(nomeSalvar);
-                    Image1.ImageUrl = "~/upload/" + nomeArquivo;
-                }
-                if (tipo.Contains("jpeg"))
-                {
-                    var caminhoAbsoluto = MapPath("~/upload");
-                    var nomeArquivo = personagem.Id + ".jpg";
-                    var nomeSalvar = caminhoAbsoluto + "\\" + nomeArquivo;
+                    if (tipo.Contains("png"))
+                    {
+                        var caminhoAbsoluto = MapPath("~/upload");
+                        var nomeArquivo = personagem.Id + ".png";
+                        var nomeSalvar = caminhoAbsoluto + "\\" + nomeArquivo;
 
-                    arquivo.SaveAs(nomeSalvar);
-                    Image1.ImageUrl = "~/upload/" + nomeArquivo;
+                        arquivo.SaveAs(nomeSalvar);
+                        Image1.ImageUrl = "~/upload/" + nomeArquivo;
+                    }
+                    if (tipo.Contains("jpeg"))
+                    {
+                        var caminhoAbsoluto = MapPath("~/upload");
+                        var nomeArquivo = personagem.Id + ".jpg";
+                        var nomeSalvar = caminhoAbsoluto + "\\" + nomeArquivo;
+
+                        arquivo.SaveAs(nomeSalvar);
+                        Image1.ImageUrl = "~/upload/" + nomeArquivo;
+                    }
                 }
                 PopularLVs();
             }
@@ -399,7 +405,6 @@ namespace CRUDGame
         {
             if (e.CommandName == "Excluir")
             {
-
                 limparCampos();
                 btnConfirmar.Text = "Cadastrar";
                 var id = e.CommandArgument;
@@ -416,6 +421,8 @@ namespace CRUDGame
                         PopularLVs();
                     }
                 }
+                Response.Redirect(Request.RawUrl, true);
+
             }
             else if (e.CommandName == "Visualizar")
             {
@@ -462,6 +469,7 @@ namespace CRUDGame
             ddlRaca.SelectedIndex = 0;
             ddlSubclasse.Items.Insert(0, "Selecione..");
             ddlSubclasse.SelectedIndex = 0;
+            Image1.Visible = false;
         }
 
         private void PopularLVs()
