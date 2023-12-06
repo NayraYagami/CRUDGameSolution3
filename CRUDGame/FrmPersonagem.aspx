@@ -52,12 +52,6 @@
             </p>
 
             <p>
-                <label>Atributo:</label>
-                <asp:DropDownList runat="server" ID="ddlAtributo">
-                </asp:DropDownList>
-            </p>
-
-            <p>
                 <label>Sexo:</label>
                 <asp:TextBox runat="server" ID="txtSexo" />
             </p>
@@ -125,11 +119,6 @@
                 </asp:DropDownList>
             </p>
 
-<%--            <p>
-                <asp:FileUpload ID="fpImagem" runat="server" />
-
-            </p>--%>
-
             <p>
                 <asp:Button Text="Cadastrar"
                     runat="server"
@@ -168,7 +157,6 @@
                 <th>Estilo Cabelo</th>
                 <th>Cor Olho</th>
                 <th>Cor Pele</th>
-                <th>Atributo</th>
                 <th>Ações</th>
             </tr>
 
@@ -234,9 +222,6 @@
                         </td>
                         <td>
                             <%# Eval("CorPeleId") %>
-                        </td>
-                        <td>
-                            <%# Eval("AtributoId") %>
                         </td>
                         <td> 
                             <asp:ImageButton ID="btnVisualizar"

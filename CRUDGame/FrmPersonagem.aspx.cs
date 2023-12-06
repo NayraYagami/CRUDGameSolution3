@@ -43,7 +43,6 @@ namespace CRUDGame
             txtSexo.Text = personagem.Sexo.ToString();
             txtConstituicao.Text = personagem.Constituicao.ToString();
 
-            var Atributo = AtributoDAO.ListarAtributos(Convert.ToInt32(personagem.AtributoId));
             var CorCabelo = CorDAO.ListarCores(Convert.ToInt32(personagem.CorCabeloId));
             var CorOlhos = CorDAO.ListarCores(Convert.ToInt32(personagem.CorOlhoId));
             var CorPele = CorDAO.ListarCores(Convert.ToInt32(personagem.CorPeleId));
@@ -51,7 +50,7 @@ namespace CRUDGame
             var Raca = RacaDAO.ListarRacas(Convert.ToInt32(personagem.RacaId));
             var Subclasse = SubclasseDAO.ListarSubclasses(Convert.ToInt32(personagem.SubclasseId));
 
-            preencherDDLs(Atributo, CorCabelo, CorOlhos, CorPele, Habilidade, Raca, Subclasse);
+            preencherDDLs(CorCabelo, CorOlhos, CorPele, Habilidade, Raca, Subclasse);
 
             //Verifica se iremos editar os dados ou não
             if (edit)
@@ -76,7 +75,6 @@ namespace CRUDGame
                 txtSabedoria.Enabled = false;
                 txtSexo.Enabled = false;
                 txtConstituicao.Enabled = false;
-                ddlAtributo.Enabled = false;
                 ddlCorCabelo.Enabled = false;
                 ddlCorOlhos.Enabled = false;
                 ddlCorPele.Enabled = false;
@@ -86,7 +84,7 @@ namespace CRUDGame
             }
         }
 
-        private void preencherDDLs(Atributo atributo, Cor corCabelo, Cor corOlhos, Cor corPele, Habilidade habilidade, Raca raca, Subclasse subclasse)
+        private void preencherDDLs(Cor corCabelo, Cor corOlhos, Cor corPele, Habilidade habilidade, Raca raca, Subclasse subclasse)
         {
             List<Cor> cores = CorDAO.ListarCores();
             PopularDDLCorPele(cores, corPele);
@@ -94,8 +92,6 @@ namespace CRUDGame
             PopularDDLCorCabelo(cores, corCabelo);
             List<Habilidade> habilidades = HabilidadeDAO.ListarHabilidades();
             PopularDDLHabilidade(habilidades, habilidade);
-            List<Atributo> atributos = AtributoDAO.ListarAtributos();
-            PopularDDlAtributo(atributos, atributo);
             List<Subclasse> subClasses = SubclasseDAO.ListarSubclasses();
             PopularDDlSubclasse(subClasses, subclasse);
             List<Raca> racas = RacaDAO.ListarRacas();
@@ -108,13 +104,11 @@ namespace CRUDGame
             {
                 List<Raca> racas = RacaDAO.ListarRacas();
                 List<Subclasse> subClasses = SubclasseDAO.ListarSubclasses();
-                List<Atributo> atributos = AtributoDAO.ListarAtributos();
                 List<Habilidade> habilidades = HabilidadeDAO.ListarHabilidades();
                 List<Cor> cores = CorDAO.ListarCores();
 
                 PopularDDLRaca(racas, null);
                 PopularDDlSubclasse(subClasses, null);
-                PopularDDlAtributo(atributos, null);
                 PopularDDLHabilidade(habilidades, null);
                 PopularDDLCorCabelo(cores, null);
                 PopularDDLCorOlho(cores, null);
@@ -191,22 +185,6 @@ namespace CRUDGame
             {
 
                 ddlHabilidade.Items.Insert(0, "Selecione..");
-            }
-        }
-
-        private void PopularDDlAtributo(List<Atributo> atributos, Atributo atributo)
-        {
-            if (atributo != null)
-            {
-                atributos.Insert(0, atributo);
-            }
-            ddlAtributo.DataSource = atributos;
-            ddlAtributo.DataTextField = "Descricao";
-            ddlAtributo.DataValueField = "Id";
-            ddlAtributo.DataBind();
-            if (atributo == null)
-            {
-                ddlAtributo.Items.Insert(0, "Selecione..");
             }
         }
 
@@ -304,10 +282,6 @@ namespace CRUDGame
             {
                 erros.Add("Sub Classe não informada");
             }
-            if (ddlAtributo.SelectedValue == "Selecione..")
-            {
-                erros.Add("Atributo não informado");
-            }
             if (ddlCorPele.SelectedValue == "Selecione..")
             {
                 erros.Add("Cor da Pele não informado");
@@ -320,10 +294,6 @@ namespace CRUDGame
             {
                 erros.Add("Cor do Cabelo não informado");
             }
-            //if (!fpImagem.HasFile)
-            //{
-            //    erros.Add("Imagem precisa ser adicionada");
-            //}
 
             if (erros == null || erros.Count == 0)
             {
@@ -346,7 +316,6 @@ namespace CRUDGame
                 }
 
                 personagem.RacaId = Convert.ToInt32(ddlRaca.SelectedValue);
-                personagem.AtributoId = Convert.ToInt32(ddlAtributo.SelectedValue);
                 personagem.SubclasseId = Convert.ToInt32(ddlSubclasse.SelectedValue);
                 personagem.Nome = txtNome.Text;
                 personagem.DataNasc = Convert.ToDateTime(txtDataNasc.Text);
@@ -468,8 +437,6 @@ namespace CRUDGame
             txtSabedoria.Text = "";
             txtSexo.Text = "";
             txtConstituicao.Text = "";
-            ddlAtributo.Items.Insert(0, "Selecione..");
-            ddlAtributo.SelectedIndex = 0;
             ddlCorCabelo.Items.Insert(0, "Selecione..");
             ddlCorCabelo.SelectedIndex = 0;
             ddlCorOlhos.Items.Insert(0, "Selecione..");
