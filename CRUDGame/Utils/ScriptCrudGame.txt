@@ -1,0 +1,131 @@
+
+-- Tabela Classe
+CREATE TABLE Classe (
+    Id INT PRIMARY KEY IDENTITY,
+    Descricao VARCHAR(50) NOT NULL
+);
+
+-- Tabela Subclasse
+CREATE TABLE Subclasse (
+    Id INT PRIMARY KEY IDENTITY,
+    Descricao VARCHAR(50) NOT NULL,
+    ClasseId INT FOREIGN KEY REFERENCES Classe(Id)
+);
+
+-- Tabela Raça
+CREATE TABLE Raca (
+    Id INT PRIMARY KEY IDENTITY,
+    Descricao VARCHAR(50) NOT NULL
+);
+
+-- Tabela Cor
+CREATE TABLE Cor (
+    Id INT PRIMARY KEY IDENTITY,
+    Descricao VARCHAR(50) NOT NULL
+);
+
+
+-- Tabela Habilidade
+CREATE TABLE Habilidade (
+    Id INT PRIMARY KEY IDENTITY,
+    Descricao VARCHAR(50) NOT NULL,
+    CorId INT FOREIGN KEY REFERENCES Cor(Id)
+);
+
+
+-- Tabela Personagem
+CREATE TABLE Personagem (
+    Id INT PRIMARY KEY IDENTITY,
+    HabilidadeId INT FOREIGN KEY REFERENCES Habilidade(Id),
+    RacaId INT FOREIGN KEY REFERENCES Raca(Id),
+    SubclasseId INT FOREIGN KEY REFERENCES Subclasse(Id),
+    Nivel INT,
+    Nome VARCHAR(50) NOT NULL,
+    DataNasc DATE,
+    Sexo CHAR(1),
+    Forca INT,
+    Destreza INT,
+    Sabedoria INT,
+    Constituicao INT,
+    Inteligencia INT,
+    Carisma INT,
+    Peso DECIMAL(5,2),
+    Altura DECIMAL(5,2),
+    CorCabeloId INT FOREIGN KEY REFERENCES Cor(Id),
+    EstiloCabelo VARCHAR(50),
+    CorOlhoId INT FOREIGN KEY REFERENCES Cor(Id),
+    CorPeleId INT FOREIGN KEY REFERENCES Cor(Id)
+);
+
+
+INSERT INTO Classe (Descricao) VALUES ('Guerreiro');
+INSERT INTO Classe (Descricao) VALUES ('Mago');
+INSERT INTO Classe (Descricao) VALUES ('Ladrão');
+
+INSERT INTO Subclasse (Descricao, ClasseId) VALUES ('Espadachim', 1);
+INSERT INTO Subclasse (Descricao, ClasseId) VALUES ('Necromante', 2);
+INSERT INTO Subclasse (Descricao, ClasseId) VALUES ('Assassino', 3);
+
+INSERT INTO Raca (Descricao) VALUES ('Humano');
+INSERT INTO Raca (Descricao) VALUES ('Elfo');
+INSERT INTO Raca (Descricao) VALUES ('Anão');
+
+INSERT INTO Cor (Descricao) VALUES ('Vermelho');
+INSERT INTO Cor (Descricao) VALUES ('Azul');
+INSERT INTO Cor (Descricao) VALUES ('Verde');
+
+INSERT INTO Habilidade (Descricao, CorId) VALUES ('Magia de Fogo', 1);
+INSERT INTO Habilidade (Descricao, CorId) VALUES ('Invisibilidade', 2);
+INSERT INTO Habilidade (Descricao, CorId) VALUES ('Ataque Sorrateiro', 3);
+
+INSERT INTO Personagem (
+    HabilidadeId, RacaId, SubclasseId, Nivel, Nome, DataNasc, Sexo,
+    Forca, Destreza, Sabedoria, Constituicao, Inteligencia, Carisma,
+    Peso, Altura, CorCabeloId, EstiloCabelo, CorOlhoId, CorPeleId
+) VALUES (
+    1, 1, 1, 10, 'Aragorn', '1980-01-01', 'M', 18, 15, 12, 16, 14, 16,
+    80.5, 1.85, 1, 'Longo', 2, 3
+);
+
+INSERT INTO Personagem (
+    HabilidadeId, RacaId, SubclasseId, Nivel, Nome, DataNasc, Sexo,
+    Forca, Destreza, Sabedoria, Constituicao, Inteligencia, Carisma,
+    Peso, Altura, CorCabeloId, EstiloCabelo, CorOlhoId, CorPeleId
+) VALUES (
+    2, 2, 2, 8, 'Gandalf', '1975-03-15', 'M', 12, 14, 20, 10, 18, 16,
+    70.2, 1.75, 2, 'Longo e Branco', 1, 2
+);
+
+INSERT INTO Personagem (
+    HabilidadeId, RacaId, SubclasseId, Nivel, Nome, DataNasc, Sexo,
+    Forca, Destreza, Sabedoria, Constituicao, Inteligencia, Carisma,
+    Peso, Altura, CorCabeloId, EstiloCabelo, CorOlhoId, CorPeleId
+) VALUES (
+    3, 3, 3, 6, 'Legolas', '1990-05-20', 'M', 14, 20, 16, 12, 10, 15,
+    65.8, 1.80, 3, 'Curto', 3, 1
+);
+
+CREATE TABLE [dbo].[PerfilUsuario] (
+    [IdPerfilUsuario] INT          IDENTITY (1, 1) NOT NULL,
+    [Descricao]       VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([IdPerfilUsuario] ASC)
+);
+
+CREATE TABLE [dbo].[Usuario] (
+    [IdUsuario]       INT           IDENTITY (1, 1) NOT NULL,
+    [Nome]            VARCHAR (150) NOT NULL,
+    [Login]           VARCHAR (150) NOT NULL,
+    [Senha]           VARCHAR (512) NOT NULL,
+    [DataNasc]        DATETIME      NOT NULL,
+    [PerfilUsuarioId] INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([IdUsuario] ASC),
+    CONSTRAINT [FK_Usuario_PerfilUsuario] FOREIGN KEY ([PerfilUsuarioId]) REFERENCES [dbo].[PerfilUsuario] ([IdPerfilUsuario])
+);
+
+CREATE TABLE [dbo].[LogAcesso] (
+    [IdLogAcesso]    INT      IDENTITY (1, 1) NOT NULL,
+    [UsuarioId]      INT      NOT NULL,
+    [DataHoraAcesso] DATETIME NOT NULL,
+    PRIMARY KEY CLUSTERED ([IdLogAcesso] ASC),
+    CONSTRAINT [FK_LogAcesso_Usuario] FOREIGN KEY ([UsuarioId]) REFERENCES [dbo].[Usuario] ([IdUsuario])
+);

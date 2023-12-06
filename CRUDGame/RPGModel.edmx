@@ -5,13 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="RPGDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Atributo">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Descricao" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
         <EntityType Name="Classe">
           <Key>
             <PropertyRef Name="Id" />
@@ -58,7 +51,6 @@
           <Property Name="EstiloCabelo" Type="varchar" MaxLength="50" />
           <Property Name="CorOlhoId" Type="int" />
           <Property Name="CorPeleId" Type="int" />
-          <Property Name="AtributoId" Type="int" />
         </EntityType>
         <EntityType Name="Raca">
           <Key>
@@ -87,7 +79,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Personage__CorCa__46E78A0C">
+        <Association Name="FK__Personage__CorCa__44FF419A">
           <End Role="Cor" Type="Self.Cor" Multiplicity="0..1" />
           <End Role="Personagem" Type="Self.Personagem" Multiplicity="*" />
           <ReferentialConstraint>
@@ -99,7 +91,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Personage__CorOl__47DBAE45">
+        <Association Name="FK__Personage__CorOl__45F365D3">
           <End Role="Cor" Type="Self.Cor" Multiplicity="0..1" />
           <End Role="Personagem" Type="Self.Personagem" Multiplicity="*" />
           <ReferentialConstraint>
@@ -111,7 +103,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Personage__CorPe__48CFD27E">
+        <Association Name="FK__Personage__CorPe__46E78A0C">
           <End Role="Cor" Type="Self.Cor" Multiplicity="0..1" />
           <End Role="Personagem" Type="Self.Personagem" Multiplicity="*" />
           <ReferentialConstraint>
@@ -123,7 +115,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Personage__Habil__440B1D61">
+        <Association Name="FK__Personage__Habil__4222D4EF">
           <End Role="Habilidade" Type="Self.Habilidade" Multiplicity="0..1" />
           <End Role="Personagem" Type="Self.Personagem" Multiplicity="*" />
           <ReferentialConstraint>
@@ -135,7 +127,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Personage__RacaI__44FF419A">
+        <Association Name="FK__Personage__RacaI__4316F928">
           <End Role="Raca" Type="Self.Raca" Multiplicity="0..1" />
           <End Role="Personagem" Type="Self.Personagem" Multiplicity="*" />
           <ReferentialConstraint>
@@ -147,7 +139,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Personage__Subcl__45F365D3">
+        <Association Name="FK__Personage__Subcl__440B1D61">
           <End Role="Subclasse" Type="Self.Subclasse" Multiplicity="0..1" />
           <End Role="Personagem" Type="Self.Personagem" Multiplicity="*" />
           <ReferentialConstraint>
@@ -171,20 +163,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Personagem_Atributo">
-          <End Role="Atributo" Type="Self.Atributo" Multiplicity="0..1" />
-          <End Role="Personagem" Type="Self.Personagem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Atributo">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Personagem">
-              <PropertyRef Name="AtributoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="RPGDBModelStoreContainer">
-          <EntitySet Name="Atributo" EntityType="Self.Atributo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Classe" EntityType="Self.Classe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cor" EntityType="Self.Cor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Habilidade" EntityType="Self.Habilidade" Schema="dbo" store:Type="Tables" />
@@ -195,27 +174,27 @@
             <End Role="Cor" EntitySet="Cor" />
             <End Role="Habilidade" EntitySet="Habilidade" />
           </AssociationSet>
-          <AssociationSet Name="FK__Personage__CorCa__46E78A0C" Association="Self.FK__Personage__CorCa__46E78A0C">
+          <AssociationSet Name="FK__Personage__CorCa__44FF419A" Association="Self.FK__Personage__CorCa__44FF419A">
             <End Role="Cor" EntitySet="Cor" />
             <End Role="Personagem" EntitySet="Personagem" />
           </AssociationSet>
-          <AssociationSet Name="FK__Personage__CorOl__47DBAE45" Association="Self.FK__Personage__CorOl__47DBAE45">
+          <AssociationSet Name="FK__Personage__CorOl__45F365D3" Association="Self.FK__Personage__CorOl__45F365D3">
             <End Role="Cor" EntitySet="Cor" />
             <End Role="Personagem" EntitySet="Personagem" />
           </AssociationSet>
-          <AssociationSet Name="FK__Personage__CorPe__48CFD27E" Association="Self.FK__Personage__CorPe__48CFD27E">
+          <AssociationSet Name="FK__Personage__CorPe__46E78A0C" Association="Self.FK__Personage__CorPe__46E78A0C">
             <End Role="Cor" EntitySet="Cor" />
             <End Role="Personagem" EntitySet="Personagem" />
           </AssociationSet>
-          <AssociationSet Name="FK__Personage__Habil__440B1D61" Association="Self.FK__Personage__Habil__440B1D61">
+          <AssociationSet Name="FK__Personage__Habil__4222D4EF" Association="Self.FK__Personage__Habil__4222D4EF">
             <End Role="Habilidade" EntitySet="Habilidade" />
             <End Role="Personagem" EntitySet="Personagem" />
           </AssociationSet>
-          <AssociationSet Name="FK__Personage__RacaI__44FF419A" Association="Self.FK__Personage__RacaI__44FF419A">
+          <AssociationSet Name="FK__Personage__RacaI__4316F928" Association="Self.FK__Personage__RacaI__4316F928">
             <End Role="Raca" EntitySet="Raca" />
             <End Role="Personagem" EntitySet="Personagem" />
           </AssociationSet>
-          <AssociationSet Name="FK__Personage__Subcl__45F365D3" Association="Self.FK__Personage__Subcl__45F365D3">
+          <AssociationSet Name="FK__Personage__Subcl__440B1D61" Association="Self.FK__Personage__Subcl__440B1D61">
             <End Role="Subclasse" EntitySet="Subclasse" />
             <End Role="Personagem" EntitySet="Personagem" />
           </AssociationSet>
@@ -223,17 +202,12 @@
             <End Role="Classe" EntitySet="Classe" />
             <End Role="Subclasse" EntitySet="Subclasse" />
           </AssociationSet>
-          <AssociationSet Name="FK_Personagem_Atributo" Association="Self.FK_Personagem_Atributo">
-            <End Role="Atributo" EntitySet="Atributo" />
-            <End Role="Personagem" EntitySet="Personagem" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RPGDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="RPGDBEntities2" annotation:LazyLoadingEnabled="true" >
-          <EntitySet Name="Atributoes" EntityType="RPGDBModel.Atributo" />
           <EntitySet Name="Classes" EntityType="RPGDBModel.Classe" />
           <EntitySet Name="Cors" EntityType="RPGDBModel.Cor" />
           <EntitySet Name="Habilidades" EntityType="RPGDBModel.Habilidade" />
@@ -248,43 +222,31 @@
             <End Role="Cor" EntitySet="Cors" />
             <End Role="Habilidade" EntitySet="Habilidades" />
           </AssociationSet>
-          <AssociationSet Name="FK__Personage__CorCa__46E78A0C" Association="RPGDBModel.FK__Personage__CorCa__46E78A0C">
+          <AssociationSet Name="FK__Personage__CorCa__44FF419A" Association="RPGDBModel.FK__Personage__CorCa__44FF419A">
             <End Role="Cor" EntitySet="Cors" />
             <End Role="Personagem" EntitySet="Personagems" />
           </AssociationSet>
-          <AssociationSet Name="FK__Personage__CorOl__47DBAE45" Association="RPGDBModel.FK__Personage__CorOl__47DBAE45">
+          <AssociationSet Name="FK__Personage__CorOl__45F365D3" Association="RPGDBModel.FK__Personage__CorOl__45F365D3">
             <End Role="Cor" EntitySet="Cors" />
             <End Role="Personagem" EntitySet="Personagems" />
           </AssociationSet>
-          <AssociationSet Name="FK__Personage__CorPe__48CFD27E" Association="RPGDBModel.FK__Personage__CorPe__48CFD27E">
+          <AssociationSet Name="FK__Personage__CorPe__46E78A0C" Association="RPGDBModel.FK__Personage__CorPe__46E78A0C">
             <End Role="Cor" EntitySet="Cors" />
             <End Role="Personagem" EntitySet="Personagems" />
           </AssociationSet>
-          <AssociationSet Name="FK__Personage__Habil__440B1D61" Association="RPGDBModel.FK__Personage__Habil__440B1D61">
+          <AssociationSet Name="FK__Personage__Habil__4222D4EF" Association="RPGDBModel.FK__Personage__Habil__4222D4EF">
             <End Role="Habilidade" EntitySet="Habilidades" />
             <End Role="Personagem" EntitySet="Personagems" />
           </AssociationSet>
-          <AssociationSet Name="FK__Personage__RacaI__44FF419A" Association="RPGDBModel.FK__Personage__RacaI__44FF419A">
+          <AssociationSet Name="FK__Personage__RacaI__4316F928" Association="RPGDBModel.FK__Personage__RacaI__4316F928">
             <End Role="Raca" EntitySet="Racas" />
             <End Role="Personagem" EntitySet="Personagems" />
           </AssociationSet>
-          <AssociationSet Name="FK__Personage__Subcl__45F365D3" Association="RPGDBModel.FK__Personage__Subcl__45F365D3">
+          <AssociationSet Name="FK__Personage__Subcl__440B1D61" Association="RPGDBModel.FK__Personage__Subcl__440B1D61">
             <End Role="Subclasse" EntitySet="Subclasses" />
             <End Role="Personagem" EntitySet="Personagems" />
           </AssociationSet>
-          <AssociationSet Name="FK_Personagem_Atributo" Association="RPGDBModel.FK_Personagem_Atributo">
-            <End Role="Atributo" EntitySet="Atributoes" />
-            <End Role="Personagem" EntitySet="Personagems" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Atributo">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Descricao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Personagems" Relationship="RPGDBModel.FK_Personagem_Atributo" FromRole="Atributo" ToRole="Personagem" />
-        </EntityType>
         <EntityType Name="Classe">
           <Key>
             <PropertyRef Name="Id" />
@@ -300,9 +262,9 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descricao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Habilidades" Relationship="RPGDBModel.FK__Habilidad__CorId__3F466844" FromRole="Cor" ToRole="Habilidade" />
-          <NavigationProperty Name="Personagems" Relationship="RPGDBModel.FK__Personage__CorCa__46E78A0C" FromRole="Cor" ToRole="Personagem" />
-          <NavigationProperty Name="Personagems1" Relationship="RPGDBModel.FK__Personage__CorOl__47DBAE45" FromRole="Cor" ToRole="Personagem" />
-          <NavigationProperty Name="Personagems2" Relationship="RPGDBModel.FK__Personage__CorPe__48CFD27E" FromRole="Cor" ToRole="Personagem" />
+          <NavigationProperty Name="Personagems" Relationship="RPGDBModel.FK__Personage__CorCa__44FF419A" FromRole="Cor" ToRole="Personagem" />
+          <NavigationProperty Name="Personagems1" Relationship="RPGDBModel.FK__Personage__CorOl__45F365D3" FromRole="Cor" ToRole="Personagem" />
+          <NavigationProperty Name="Personagems2" Relationship="RPGDBModel.FK__Personage__CorPe__46E78A0C" FromRole="Cor" ToRole="Personagem" />
         </EntityType>
         <EntityType Name="Habilidade">
           <Key>
@@ -312,7 +274,7 @@
           <Property Name="Descricao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CorId" Type="Int32" />
           <NavigationProperty Name="Cor" Relationship="RPGDBModel.FK__Habilidad__CorId__3F466844" FromRole="Habilidade" ToRole="Cor" />
-          <NavigationProperty Name="Personagems" Relationship="RPGDBModel.FK__Personage__Habil__440B1D61" FromRole="Habilidade" ToRole="Personagem" />
+          <NavigationProperty Name="Personagems" Relationship="RPGDBModel.FK__Personage__Habil__4222D4EF" FromRole="Habilidade" ToRole="Personagem" />
         </EntityType>
         <EntityType Name="Personagem">
           <Key>
@@ -338,14 +300,12 @@
           <Property Name="EstiloCabelo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CorOlhoId" Type="Int32" />
           <Property Name="CorPeleId" Type="Int32" />
-          <NavigationProperty Name="Cor" Relationship="RPGDBModel.FK__Personage__CorCa__46E78A0C" FromRole="Personagem" ToRole="Cor" />
-          <NavigationProperty Name="Cor1" Relationship="RPGDBModel.FK__Personage__CorOl__47DBAE45" FromRole="Personagem" ToRole="Cor" />
-          <NavigationProperty Name="Cor2" Relationship="RPGDBModel.FK__Personage__CorPe__48CFD27E" FromRole="Personagem" ToRole="Cor" />
-          <NavigationProperty Name="Habilidade" Relationship="RPGDBModel.FK__Personage__Habil__440B1D61" FromRole="Personagem" ToRole="Habilidade" />
-          <NavigationProperty Name="Raca" Relationship="RPGDBModel.FK__Personage__RacaI__44FF419A" FromRole="Personagem" ToRole="Raca" />
-          <NavigationProperty Name="Subclasse" Relationship="RPGDBModel.FK__Personage__Subcl__45F365D3" FromRole="Personagem" ToRole="Subclasse" />
-          <Property Name="AtributoId" Type="Int32" />
-          <NavigationProperty Name="Atributo" Relationship="RPGDBModel.FK_Personagem_Atributo" FromRole="Personagem" ToRole="Atributo" />
+          <NavigationProperty Name="Cor" Relationship="RPGDBModel.FK__Personage__CorCa__44FF419A" FromRole="Personagem" ToRole="Cor" />
+          <NavigationProperty Name="Cor1" Relationship="RPGDBModel.FK__Personage__CorOl__45F365D3" FromRole="Personagem" ToRole="Cor" />
+          <NavigationProperty Name="Cor2" Relationship="RPGDBModel.FK__Personage__CorPe__46E78A0C" FromRole="Personagem" ToRole="Cor" />
+          <NavigationProperty Name="Habilidade" Relationship="RPGDBModel.FK__Personage__Habil__4222D4EF" FromRole="Personagem" ToRole="Habilidade" />
+          <NavigationProperty Name="Raca" Relationship="RPGDBModel.FK__Personage__RacaI__4316F928" FromRole="Personagem" ToRole="Raca" />
+          <NavigationProperty Name="Subclasse" Relationship="RPGDBModel.FK__Personage__Subcl__440B1D61" FromRole="Personagem" ToRole="Subclasse" />
         </EntityType>
         <EntityType Name="Raca">
           <Key>
@@ -353,7 +313,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descricao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Personagems" Relationship="RPGDBModel.FK__Personage__RacaI__44FF419A" FromRole="Raca" ToRole="Personagem" />
+          <NavigationProperty Name="Personagems" Relationship="RPGDBModel.FK__Personage__RacaI__4316F928" FromRole="Raca" ToRole="Personagem" />
         </EntityType>
         <EntityType Name="Subclasse">
           <Key>
@@ -363,7 +323,7 @@
           <Property Name="Descricao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ClasseId" Type="Int32" />
           <NavigationProperty Name="Classe" Relationship="RPGDBModel.FK__Subclasse__Class__38996AB5" FromRole="Subclasse" ToRole="Classe" />
-          <NavigationProperty Name="Personagems" Relationship="RPGDBModel.FK__Personage__Subcl__45F365D3" FromRole="Subclasse" ToRole="Personagem" />
+          <NavigationProperty Name="Personagems" Relationship="RPGDBModel.FK__Personage__Subcl__440B1D61" FromRole="Subclasse" ToRole="Personagem" />
         </EntityType>
         <Association Name="FK__Subclasse__Class__38996AB5">
           <End Type="RPGDBModel.Classe" Role="Classe" Multiplicity="0..1" />
@@ -389,7 +349,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Personage__CorCa__46E78A0C">
+        <Association Name="FK__Personage__CorCa__44FF419A">
           <End Type="RPGDBModel.Cor" Role="Cor" Multiplicity="0..1" />
           <End Type="RPGDBModel.Personagem" Role="Personagem" Multiplicity="*" />
           <ReferentialConstraint>
@@ -401,7 +361,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Personage__CorOl__47DBAE45">
+        <Association Name="FK__Personage__CorOl__45F365D3">
           <End Type="RPGDBModel.Cor" Role="Cor" Multiplicity="0..1" />
           <End Type="RPGDBModel.Personagem" Role="Personagem" Multiplicity="*" />
           <ReferentialConstraint>
@@ -413,7 +373,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Personage__CorPe__48CFD27E">
+        <Association Name="FK__Personage__CorPe__46E78A0C">
           <End Type="RPGDBModel.Cor" Role="Cor" Multiplicity="0..1" />
           <End Type="RPGDBModel.Personagem" Role="Personagem" Multiplicity="*" />
           <ReferentialConstraint>
@@ -425,7 +385,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Personage__Habil__440B1D61">
+        <Association Name="FK__Personage__Habil__4222D4EF">
           <End Type="RPGDBModel.Habilidade" Role="Habilidade" Multiplicity="0..1" />
           <End Type="RPGDBModel.Personagem" Role="Personagem" Multiplicity="*" />
           <ReferentialConstraint>
@@ -437,7 +397,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Personage__RacaI__44FF419A">
+        <Association Name="FK__Personage__RacaI__4316F928">
           <End Type="RPGDBModel.Raca" Role="Raca" Multiplicity="0..1" />
           <End Type="RPGDBModel.Personagem" Role="Personagem" Multiplicity="*" />
           <ReferentialConstraint>
@@ -449,7 +409,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Personage__Subcl__45F365D3">
+        <Association Name="FK__Personage__Subcl__440B1D61">
           <End Type="RPGDBModel.Subclasse" Role="Subclasse" Multiplicity="0..1" />
           <End Type="RPGDBModel.Personagem" Role="Personagem" Multiplicity="*" />
           <ReferentialConstraint>
@@ -461,32 +421,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Personagem_Atributo">
-          <End Type="RPGDBModel.Atributo" Role="Atributo" Multiplicity="0..1" />
-          <End Type="RPGDBModel.Personagem" Role="Personagem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Atributo">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Personagem">
-              <PropertyRef Name="AtributoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="RPGDBModelStoreContainer" CdmEntityContainer="RPGDBEntities2" >
-          <EntitySetMapping Name="Atributoes">
-            <EntityTypeMapping TypeName="RPGDBModel.Atributo">
-              <MappingFragment StoreEntitySet="Atributo">
-                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Classes">
             <EntityTypeMapping TypeName="RPGDBModel.Classe">
               <MappingFragment StoreEntitySet="Classe">
@@ -515,7 +455,6 @@
           <EntitySetMapping Name="Personagems">
             <EntityTypeMapping TypeName="RPGDBModel.Personagem">
               <MappingFragment StoreEntitySet="Personagem">
-                <ScalarProperty Name="AtributoId" ColumnName="AtributoId" />
                 <ScalarProperty Name="CorPeleId" ColumnName="CorPeleId" />
                 <ScalarProperty Name="CorOlhoId" ColumnName="CorOlhoId" />
                 <ScalarProperty Name="EstiloCabelo" ColumnName="EstiloCabelo" />

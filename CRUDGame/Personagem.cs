@@ -34,7 +34,6 @@ namespace CRUDGame
         public string EstiloCabelo { get; set; }
         public Nullable<int> CorOlhoId { get; set; }
         public Nullable<int> CorPeleId { get; set; }
-        public Nullable<int> AtributoId { get; set; }
     
         public virtual Cor Cor { get; set; }
         public virtual Cor Cor1 { get; set; }
@@ -42,6 +41,5 @@ namespace CRUDGame
         public virtual Habilidade Habilidade { get; set; }
         public virtual Raca Raca { get; set; }
         public virtual Subclasse Subclasse { get; set; }
-        public virtual Atributo Atributo { get; set; }
     }
 }

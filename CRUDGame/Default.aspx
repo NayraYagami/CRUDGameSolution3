@@ -18,7 +18,6 @@
             <a runat="server" href="~/Subclasses">Gerenciar Subclasses</a>
             <a runat="server" href="~/Cores">Gerenciar Cores</a>
             <a runat="server" href="~/Personagens">Gerenciar Personagens</a>
-            <a runat="server" href="~/Atributos">Gerenciar Atributos</a>
         </div>
     </form>
 </body>

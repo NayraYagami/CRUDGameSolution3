@@ -74,5 +74,19 @@ namespace CRUDGame
 
             return sub;
         }
+
+        internal static Subclasse ListarSubclasses(int v)
+        {
+            Subclasse subclasse = null;
+
+            using (var ctx = new RPGDBEntities2())
+            {
+                subclasse = ctx.Subclasses.FirstOrDefault(
+                        x => x.Id == v
+                    );
+            }
+
+            return subclasse;
+        }
     }
 }

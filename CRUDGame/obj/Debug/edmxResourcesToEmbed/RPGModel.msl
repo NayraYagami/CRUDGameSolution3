@@ -1,14 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="RPGDBModelStoreContainer" CdmEntityContainer="RPGDBEntities2">
-    <EntitySetMapping Name="Atributoes">
-      <EntityTypeMapping TypeName="RPGDBModel.Atributo">
-        <MappingFragment StoreEntitySet="Atributo">
-          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Classes">
       <EntityTypeMapping TypeName="RPGDBModel.Classe">
         <MappingFragment StoreEntitySet="Classe">
@@ -37,7 +29,6 @@
     <EntitySetMapping Name="Personagems">
       <EntityTypeMapping TypeName="RPGDBModel.Personagem">
         <MappingFragment StoreEntitySet="Personagem">
-          <ScalarProperty Name="AtributoId" ColumnName="AtributoId" />
           <ScalarProperty Name="CorPeleId" ColumnName="CorPeleId" />
           <ScalarProperty Name="CorOlhoId" ColumnName="CorOlhoId" />
           <ScalarProperty Name="EstiloCabelo" ColumnName="EstiloCabelo" />

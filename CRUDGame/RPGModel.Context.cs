@@ -25,7 +25,6 @@ namespace CRUDGame
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Atributo> Atributoes { get; set; }
         public virtual DbSet<Classe> Classes { get; set; }
         public virtual DbSet<Cor> Cors { get; set; }
         public virtual DbSet<Habilidade> Habilidades { get; set; }
