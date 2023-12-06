@@ -120,6 +120,10 @@
             </p>
 
             <p>
+                <asp:FileUpload ID="fpImagem" runat="server" />
+            </p>
+
+            <p>
                 <asp:Button Text="Cadastrar"
                     runat="server"
                     ID="btnConfirmar" OnClick="btnConfirmar_Click1" />
@@ -129,9 +133,9 @@
             </p>
         </fieldset>
 
-   <%--     <p>
+        <p>
             <asp:Image ID="Image1" runat="server" />
-        </p>--%>
+        </p>
 
         <h2>Personagens cadastrados</h2>
 
@@ -223,7 +227,7 @@
                         <td>
                             <%# Eval("CorPeleId") %>
                         </td>
-                        <td> 
+                        <td>
                             <asp:ImageButton ID="btnVisualizar"
                                 runat="server"
                                 ImageUrl="img/view.svg"

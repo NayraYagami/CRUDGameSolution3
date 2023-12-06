@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -42,6 +43,7 @@ namespace CRUDGame
             txtSabedoria.Text = personagem.Sabedoria.ToString();
             txtSexo.Text = personagem.Sexo.ToString();
             txtConstituicao.Text = personagem.Constituicao.ToString();
+            fpImagem.Visible = false;
 
             var CorCabelo = CorDAO.ListarCores(Convert.ToInt32(personagem.CorCabeloId));
             var CorOlhos = CorDAO.ListarCores(Convert.ToInt32(personagem.CorOlhoId));
@@ -81,6 +83,11 @@ namespace CRUDGame
                 ddlHabilidade.Enabled = false;
                 ddlRaca.Enabled = false;
                 ddlSubclasse.Enabled = false;
+                string jpgPath = $"~/upload/{id}.jpg";
+                string pngPath = $"~/upload/{id}.png";
+                Image1.ImageUrl = File.Exists(Server.MapPath(jpgPath)) ? jpgPath : pngPath;
+
+
             }
         }
 
@@ -294,6 +301,13 @@ namespace CRUDGame
             {
                 erros.Add("Cor do Cabelo não informado");
             }
+            if (cadastrando)
+            {
+                if (!fpImagem.HasFile)
+                {
+                    erros.Add("Imagem não adicionada!");
+                }
+            }
 
             if (erros == null || erros.Count == 0)
             {
@@ -348,27 +362,27 @@ namespace CRUDGame
 
                 limparCampos();
 
-                //var arquivo = fpImagem.PostedFile;
-                //var tipo = arquivo.ContentType;
+                var arquivo = fpImagem.PostedFile;
+                var tipo = arquivo.ContentType;
 
-                //if (tipo.Contains("png"))
-                //{
-                //    var caminhoAbsoluto = MapPath("~/upload");
-                //    var nomeArquivo = personagem.Id + ".png";
-                //    var nomeSalvar = caminhoAbsoluto + "\\" + nomeArquivo;
+                if (tipo.Contains("png"))
+                {
+                    var caminhoAbsoluto = MapPath("~/upload");
+                    var nomeArquivo = personagem.Id + ".png";
+                    var nomeSalvar = caminhoAbsoluto + "\\" + nomeArquivo;
 
-                //    arquivo.SaveAs(nomeSalvar);
-                //    Image1.ImageUrl = "~/upload/" + nomeArquivo;
-                //}
-                //if (tipo.Contains("jpeg"))
-                //{
-                //    var caminhoAbsoluto = MapPath("~/upload");
-                //    var nomeArquivo = personagem.Id + ".jpg";
-                //    var nomeSalvar = caminhoAbsoluto + "\\" + nomeArquivo;
+                    arquivo.SaveAs(nomeSalvar);
+                    Image1.ImageUrl = "~/upload/" + nomeArquivo;
+                }
+                if (tipo.Contains("jpeg"))
+                {
+                    var caminhoAbsoluto = MapPath("~/upload");
+                    var nomeArquivo = personagem.Id + ".jpg";
+                    var nomeSalvar = caminhoAbsoluto + "\\" + nomeArquivo;
 
-                //    arquivo.SaveAs(nomeSalvar);
-                //    Image1.ImageUrl = "~/upload/" + nomeArquivo;
-                //}
+                    arquivo.SaveAs(nomeSalvar);
+                    Image1.ImageUrl = "~/upload/" + nomeArquivo;
+                }
                 PopularLVs();
             }
             else

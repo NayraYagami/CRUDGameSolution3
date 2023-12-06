@@ -1,12 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="RPGDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="Atributo">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Descricao" Type="varchar" MaxLength="50" Nullable="false" />
-  </EntityType>
   <EntityType Name="Classe">
     <Key>
       <PropertyRef Name="Id" />
@@ -50,7 +43,6 @@
     <Property Name="Peso" Type="decimal" Precision="5" Scale="2" />
     <Property Name="Altura" Type="decimal" Precision="5" Scale="2" />
     <Property Name="CorCabeloId" Type="int" />
-    <Property Name="AtributoId" Type="int" />
     <Property Name="EstiloCabelo" Type="varchar" MaxLength="50" />
     <Property Name="CorOlhoId" Type="int" />
     <Property Name="CorPeleId" Type="int" />
@@ -82,19 +74,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Personage__Atrib__47DBAE45">
-    <End Role="Atributo" Type="Self.Atributo" Multiplicity="0..1" />
-    <End Role="Personagem" Type="Self.Personagem" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Atributo">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Personagem">
-        <PropertyRef Name="AtributoId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Personage__CorCa__46E78A0C">
+  <Association Name="FK__Personage__CorCa__44FF419A">
     <End Role="Cor" Type="Self.Cor" Multiplicity="0..1" />
     <End Role="Personagem" Type="Self.Personagem" Multiplicity="*" />
     <ReferentialConstraint>
@@ -106,7 +86,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Personage__CorOl__48CFD27E">
+  <Association Name="FK__Personage__CorOl__45F365D3">
     <End Role="Cor" Type="Self.Cor" Multiplicity="0..1" />
     <End Role="Personagem" Type="Self.Personagem" Multiplicity="*" />
     <ReferentialConstraint>
@@ -118,7 +98,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Personage__CorPe__49C3F6B7">
+  <Association Name="FK__Personage__CorPe__46E78A0C">
     <End Role="Cor" Type="Self.Cor" Multiplicity="0..1" />
     <End Role="Personagem" Type="Self.Personagem" Multiplicity="*" />
     <ReferentialConstraint>
@@ -130,7 +110,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Personage__Habil__440B1D61">
+  <Association Name="FK__Personage__Habil__4222D4EF">
     <End Role="Habilidade" Type="Self.Habilidade" Multiplicity="0..1" />
     <End Role="Personagem" Type="Self.Personagem" Multiplicity="*" />
     <ReferentialConstraint>
@@ -142,7 +122,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Personage__RacaI__44FF419A">
+  <Association Name="FK__Personage__RacaI__4316F928">
     <End Role="Raca" Type="Self.Raca" Multiplicity="0..1" />
     <End Role="Personagem" Type="Self.Personagem" Multiplicity="*" />
     <ReferentialConstraint>
@@ -154,7 +134,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Personage__Subcl__45F365D3">
+  <Association Name="FK__Personage__Subcl__440B1D61">
     <End Role="Subclasse" Type="Self.Subclasse" Multiplicity="0..1" />
     <End Role="Personagem" Type="Self.Personagem" Multiplicity="*" />
     <ReferentialConstraint>
@@ -179,7 +159,6 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="RPGDBModelStoreContainer">
-    <EntitySet Name="Atributo" EntityType="Self.Atributo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Classe" EntityType="Self.Classe" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Cor" EntityType="Self.Cor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Habilidade" EntityType="Self.Habilidade" Schema="dbo" store:Type="Tables" />
@@ -190,31 +169,27 @@
       <End Role="Cor" EntitySet="Cor" />
       <End Role="Habilidade" EntitySet="Habilidade" />
     </AssociationSet>
-    <AssociationSet Name="FK__Personage__Atrib__47DBAE45" Association="Self.FK__Personage__Atrib__47DBAE45">
-      <End Role="Atributo" EntitySet="Atributo" />
-      <End Role="Personagem" EntitySet="Personagem" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Personage__CorCa__46E78A0C" Association="Self.FK__Personage__CorCa__46E78A0C">
+    <AssociationSet Name="FK__Personage__CorCa__44FF419A" Association="Self.FK__Personage__CorCa__44FF419A">
       <End Role="Cor" EntitySet="Cor" />
       <End Role="Personagem" EntitySet="Personagem" />
     </AssociationSet>
-    <AssociationSet Name="FK__Personage__CorOl__48CFD27E" Association="Self.FK__Personage__CorOl__48CFD27E">
+    <AssociationSet Name="FK__Personage__CorOl__45F365D3" Association="Self.FK__Personage__CorOl__45F365D3">
       <End Role="Cor" EntitySet="Cor" />
       <End Role="Personagem" EntitySet="Personagem" />
     </AssociationSet>
-    <AssociationSet Name="FK__Personage__CorPe__49C3F6B7" Association="Self.FK__Personage__CorPe__49C3F6B7">
+    <AssociationSet Name="FK__Personage__CorPe__46E78A0C" Association="Self.FK__Personage__CorPe__46E78A0C">
       <End Role="Cor" EntitySet="Cor" />
       <End Role="Personagem" EntitySet="Personagem" />
     </AssociationSet>
-    <AssociationSet Name="FK__Personage__Habil__440B1D61" Association="Self.FK__Personage__Habil__440B1D61">
+    <AssociationSet Name="FK__Personage__Habil__4222D4EF" Association="Self.FK__Personage__Habil__4222D4EF">
       <End Role="Habilidade" EntitySet="Habilidade" />
       <End Role="Personagem" EntitySet="Personagem" />
     </AssociationSet>
-    <AssociationSet Name="FK__Personage__RacaI__44FF419A" Association="Self.FK__Personage__RacaI__44FF419A">
+    <AssociationSet Name="FK__Personage__RacaI__4316F928" Association="Self.FK__Personage__RacaI__4316F928">
       <End Role="Raca" EntitySet="Raca" />
       <End Role="Personagem" EntitySet="Personagem" />
     </AssociationSet>
-    <AssociationSet Name="FK__Personage__Subcl__45F365D3" Association="Self.FK__Personage__Subcl__45F365D3">
+    <AssociationSet Name="FK__Personage__Subcl__440B1D61" Association="Self.FK__Personage__Subcl__440B1D61">
       <End Role="Subclasse" EntitySet="Subclasse" />
       <End Role="Personagem" EntitySet="Personagem" />
     </AssociationSet>

@@ -86,7 +86,6 @@ namespace CRUDGame
                      );
 
                     personagem1.RacaId = personagem.RacaId;
-                    personagem1.AtributoId = personagem.AtributoId;
                     personagem1.SubclasseId = personagem.SubclasseId;
                     personagem1.Nome = personagem.Nome;
                     personagem1.DataNasc = personagem.DataNasc;

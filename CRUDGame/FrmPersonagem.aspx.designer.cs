@@ -195,6 +195,15 @@ namespace CRUDGame
         protected global::System.Web.UI.WebControls.DropDownList ddlCorPele;
 
         /// <summary>
+        /// Controle fpImagem.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fpImagem;
+
+        /// <summary>
         /// Controle btnConfirmar.
         /// </summary>
         /// <remarks>
@@ -211,6 +220,15 @@ namespace CRUDGame
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblMensagem;
+
+        /// <summary>
+        /// Controle Image1.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image Image1;
 
         /// <summary>
         /// Controle lvPersonagens.
