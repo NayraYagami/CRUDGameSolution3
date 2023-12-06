@@ -106,16 +106,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Atributo.cs">
-      <DependentUpon>RPGModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Classe.cs">
-      <DependentUpon>RPGModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="ClasseDAO.cs" />
-    <Compile Include="Cor.cs">
-      <DependentUpon>RPGModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="CorDAO.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -173,18 +164,9 @@
     <Compile Include="FrmSubclasse.aspx.designer.cs">
       <DependentUpon>FrmSubclasse.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Habilidade.cs">
-      <DependentUpon>RPGModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="HabilidadeDAO.cs" />
-    <Compile Include="Personagem.cs">
-      <DependentUpon>RPGModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="PersonagemDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Raca.cs">
-      <DependentUpon>RPGModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="RacaDAO.cs" />
     <Compile Include="RPGModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -200,9 +182,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RPGModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Subclasse.cs">
-      <DependentUpon>RPGModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SubclasseDAO.cs" />
     <Compile Include="SubclassePOCO.cs" />
