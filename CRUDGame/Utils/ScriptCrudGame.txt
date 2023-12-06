@@ -104,3 +104,28 @@ INSERT INTO Personagem (
     3, 3, 3, 6, 'Legolas', '1990-05-20', 'M', 14, 20, 16, 12, 10, 15,
     65.8, 1.80, 3, 'Curto', 3, 1
 );
+
+CREATE TABLE [dbo].[LogAcesso] (
+    [IdLogAcesso]    INT      IDENTITY (1, 1) NOT NULL,
+    [UsuarioId]      INT      NOT NULL,
+    [DataHoraAcesso] DATETIME NOT NULL,
+    PRIMARY KEY CLUSTERED ([IdLogAcesso] ASC),
+    CONSTRAINT [FK_LogAcesso_Usuario] FOREIGN KEY ([UsuarioId]) REFERENCES [dbo].[Usuario] ([IdUsuario])
+);
+
+CREATE TABLE [dbo].[PerfilUsuario] (
+    [IdPerfilUsuario] INT          IDENTITY (1, 1) NOT NULL,
+    [Descricao]       VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([IdPerfilUsuario] ASC)
+);
+
+CREATE TABLE [dbo].[Usuario] (
+    [IdUsuario]       INT           IDENTITY (1, 1) NOT NULL,
+    [Nome]            VARCHAR (150) NOT NULL,
+    [Login]           VARCHAR (150) NOT NULL,
+    [Senha]           VARCHAR (512) NOT NULL,
+    [DataNasc]        DATETIME      NOT NULL,
+    [PerfilUsuarioId] INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([IdUsuario] ASC),
+    CONSTRAINT [FK_Usuario_PerfilUsuario] FOREIGN KEY ([PerfilUsuarioId]) REFERENCES [dbo].[PerfilUsuario] ([IdPerfilUsuario])
+);
