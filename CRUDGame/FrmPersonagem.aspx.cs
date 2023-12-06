@@ -23,13 +23,11 @@ namespace CRUDGame
             {
                 List<Raca> racas = RacaDAO.ListarRacas();
                 List<Subclasse> subClasses = SubclasseDAO.ListarSubclasses();
-                List<Atributo> atributos = AtributoDAO.ListarAtributos();
                 List<Habilidade> habilidades = HabilidadeDAO.ListarHabilidades();
                 List<Cor> cores = CorDAO.ListarCores();
 
                 PopularDDLRaca(racas);
                 PopularDDlSubclasse(subClasses);
-                PopularDDlAtributo(atributos);
                 PopularDDLHabilidade(habilidades);
                 PopularDDLCorCabelo(cores);
                 PopularDDLCorOlho(cores);
@@ -76,15 +74,6 @@ namespace CRUDGame
             ddlHabilidade.DataValueField = "Id";
             ddlHabilidade.DataBind();
             ddlHabilidade.Items.Insert(0, "Selecione..");
-        }
-
-        private void PopularDDlAtributo(List<Atributo> atributos)
-        {
-            ddlAtributo.DataSource = atributos;
-            ddlAtributo.DataTextField = "Descricao";
-            ddlAtributo.DataValueField = "Id";
-            ddlAtributo.DataBind();
-            ddlAtributo.Items.Insert(0, "Selecione..");
         }
 
         private void PopularDDlSubclasse(List<Subclasse> subClasses)
@@ -178,7 +167,6 @@ namespace CRUDGame
             {
                 Personagem personagem = new Personagem();
                 personagem.RacaId = Convert.ToInt32(ddlRaca.SelectedValue);
-                personagem.AtributoId = Convert.ToInt32(ddlAtributo.SelectedValue);
                 personagem.SubclasseId = Convert.ToInt32(ddlSubclasse.SelectedValue);
                 personagem.Nome = txtNome.Text;
                 personagem.DataNasc = Convert.ToDateTime(txtDataNasc.Text);
@@ -314,7 +302,6 @@ namespace CRUDGame
             {
                 Personagem personagem = new Personagem();
                 personagem.RacaId = Convert.ToInt32(ddlRaca.SelectedValue);
-                personagem.AtributoId = Convert.ToInt32(ddlAtributo.SelectedValue);
                 personagem.SubclasseId = Convert.ToInt32(ddlSubclasse.SelectedValue);
                 personagem.Nome = txtNome.Text;
                 personagem.DataNasc = Convert.ToDateTime(txtDataNasc.Text);
