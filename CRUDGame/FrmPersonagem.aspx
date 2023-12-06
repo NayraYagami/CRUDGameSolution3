@@ -144,7 +144,7 @@
             <asp:Image ID="Image1" runat="server" />
         </p>
 
-        <h2>Cores cadastradas</h2>
+        <h2>Personagens cadastrados</h2>
 
         <table border="1" class="tabela">
             <tr>
