@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -120,7 +120,6 @@ namespace CRUDGame
                 PopularDDLCorCabelo(cores, null);
                 PopularDDLCorOlho(cores, null);
                 PopularDDLCorPele(cores, null);
-
             }
             catch (Exception ex)
             {
@@ -190,12 +189,12 @@ namespace CRUDGame
             ddlHabilidade.DataBind();
             if (habilidade == null)
             {
-
                 ddlHabilidade.Items.Insert(0, "Selecione..");
             }
         }
 
         private void PopularDDlSubclasse(List<Subclasse> subClasses, Subclasse subclasse)
+
         {
             if (subclasse != null)
             {
