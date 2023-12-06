@@ -1,0 +1,123 @@
+
+-- Tabela Classe
+CREATE TABLE Classe (
+    Id INT PRIMARY KEY IDENTITY,
+    Descricao VARCHAR(50) NOT NULL
+);
+
+-- Tabela Subclasse
+CREATE TABLE Subclasse (
+    Id INT PRIMARY KEY IDENTITY,
+    Descricao VARCHAR(50) NOT NULL,
+    ClasseId INT FOREIGN KEY REFERENCES Classe(Id)
+);
+
+-- Tabela Raça
+CREATE TABLE Raca (
+    Id INT PRIMARY KEY IDENTITY,
+    Descricao VARCHAR(50) NOT NULL
+);
+
+-- Tabela Cor
+CREATE TABLE Cor (
+    Id INT PRIMARY KEY IDENTITY,
+    Descricao VARCHAR(50) NOT NULL
+);
+
+
+-- Tabela Habilidade
+CREATE TABLE Habilidade (
+    Id INT PRIMARY KEY IDENTITY,
+    Descricao VARCHAR(50) NOT NULL,
+    CorId INT FOREIGN KEY REFERENCES Cor(Id)
+);
+
+-- Tabela Atributo
+CREATE TABLE Atributo (
+    Id INT PRIMARY KEY IDENTITY,
+    Descricao VARCHAR(50) NOT NULL
+);
+
+
+-- Tabela Personagem
+CREATE TABLE Personagem (
+    Id INT PRIMARY KEY IDENTITY,
+    HabilidadeId INT FOREIGN KEY REFERENCES Habilidade(Id),
+    RacaId INT FOREIGN KEY REFERENCES Raca(Id),
+    SubclasseId INT FOREIGN KEY REFERENCES Subclasse(Id),
+    Nivel INT,
+    Nome VARCHAR(50) NOT NULL,
+    DataNasc DATE,
+    Sexo CHAR(1),
+    Forca INT,
+    Destreza INT,
+    Sabedoria INT,
+    Constituicao INT,
+    Inteligencia INT,
+    Carisma INT,
+    Peso DECIMAL(5,2),
+    Altura DECIMAL(5,2),
+    CorCabeloId INT FOREIGN KEY REFERENCES Cor(Id),
+    AtributoId INT FOREIGN KEY REFERENCES Atributo(Id),
+    EstiloCabelo VARCHAR(50),
+    CorOlhoId INT FOREIGN KEY REFERENCES Cor(Id),
+    CorPeleId INT FOREIGN KEY REFERENCES Cor(Id)
+);
+
+
+INSERT INTO Classe (Descricao) VALUES ('Guerreiro');
+INSERT INTO Classe (Descricao) VALUES ('Mago');
+INSERT INTO Classe (Descricao) VALUES ('Ladrão');
+
+INSERT INTO Subclasse (Descricao, ClasseId) VALUES ('Bárbaro', 1);
+INSERT INTO Subclasse (Descricao, ClasseId) VALUES ('Feiticeiro', 2);
+INSERT INTO Subclasse (Descricao, ClasseId) VALUES ('Assassino', 3);
+
+INSERT INTO Raca (Descricao) VALUES ('Humano');
+INSERT INTO Raca (Descricao) VALUES ('Elfo');
+INSERT INTO Raca (Descricao) VALUES ('Anão');
+
+INSERT INTO Cor (Descricao) VALUES ('Vermelho');
+INSERT INTO Cor (Descricao) VALUES ('Verde');
+INSERT INTO Cor (Descricao) VALUES ('Azul');
+
+INSERT INTO Habilidade (Descricao, CorId) VALUES ('Ataque Físico', 1);
+INSERT INTO Habilidade (Descricao, CorId) VALUES ('Magia de Fogo', 2);
+INSERT INTO Habilidade (Descricao, CorId) VALUES ('Camuflagem', 3);
+
+INSERT INTO Atributo (Descricao) VALUES ('Força');
+INSERT INTO Atributo (Descricao) VALUES ('Destreza');
+INSERT INTO Atributo (Descricao) VALUES ('Inteligência');
+
+INSERT INTO Personagem (
+    HabilidadeId, RacaId, SubclasseId, Nivel, Nome, DataNasc, Sexo, Forca, Destreza, Sabedoria, 
+    Constituicao, Inteligencia, Carisma, Peso, Altura, CorCabeloId, AtributoId, EstiloCabelo, 
+    CorOlhoId, CorPeleId
+) VALUES (
+    1, 1, 1, 5, 'Herói', '2000-01-01', 'M', 18, 15, 12, 16, 14, 13, 70.5, 1.75, 1, 1, 'Cabelo Curto', 
+    2, 3
+);
+
+INSERT INTO Personagem (
+    HabilidadeId, RacaId, SubclasseId, Nivel, Nome, DataNasc, Sexo, Forca, Destreza, Sabedoria, 
+    Constituicao, Inteligencia, Carisma, Peso, Altura, CorCabeloId, AtributoId, EstiloCabelo, 
+    CorOlhoId, CorPeleId
+) VALUES (
+    2, 2, 2, 8, 'Feiticeira', '1995-03-15', 'F', 12, 10, 18, 14, 20, 16, 60.2, 1.65, 2, 2, 'Cabelo Longo', 
+    1, 2
+);
+
+INSERT INTO Personagem (
+    HabilidadeId, RacaId, SubclasseId, Nivel, Nome, DataNasc, Sexo, Forca, Destreza, Sabedoria, 
+    Constituicao, Inteligencia, Carisma, Peso, Altura, CorCabeloId, AtributoId, EstiloCabelo, 
+    CorOlhoId, CorPeleId
+) VALUES (
+    3, 3, 3, 6, 'Ladrão Hábil', '1998-07-20', 'M', 15, 20, 10, 12, 16, 14, 65.8, 1.80, 3, 3, 'Cabelo Bagunçado', 
+    3, 1
+);
+
+
+
+
+
+

@@ -125,10 +125,10 @@
                 </asp:DropDownList>
             </p>
 
-            <p>
+<%--            <p>
                 <asp:FileUpload ID="fpImagem" runat="server" />
 
-            </p>
+            </p>--%>
 
             <p>
                 <asp:Button Text="Cadastrar"
@@ -140,9 +140,9 @@
             </p>
         </fieldset>
 
-        <p>
+   <%--     <p>
             <asp:Image ID="Image1" runat="server" />
-        </p>
+        </p>--%>
 
         <h2>Personagens cadastrados</h2>
 
@@ -238,7 +238,7 @@
                         <td>
                             <%# Eval("AtributoId") %>
                         </td>
-                        <td>
+                        <td> 
                             <asp:ImageButton ID="btnVisualizar"
                                 runat="server"
                                 ImageUrl="img/view.svg"

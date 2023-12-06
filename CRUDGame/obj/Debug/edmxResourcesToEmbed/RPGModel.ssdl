@@ -50,10 +50,10 @@
     <Property Name="Peso" Type="decimal" Precision="5" Scale="2" />
     <Property Name="Altura" Type="decimal" Precision="5" Scale="2" />
     <Property Name="CorCabeloId" Type="int" />
+    <Property Name="AtributoId" Type="int" />
     <Property Name="EstiloCabelo" Type="varchar" MaxLength="50" />
     <Property Name="CorOlhoId" Type="int" />
     <Property Name="CorPeleId" Type="int" />
-    <Property Name="AtributoId" Type="int" />
   </EntityType>
   <EntityType Name="Raca">
     <Key>
@@ -82,6 +82,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Personage__Atrib__47DBAE45">
+    <End Role="Atributo" Type="Self.Atributo" Multiplicity="0..1" />
+    <End Role="Personagem" Type="Self.Personagem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Atributo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Personagem">
+        <PropertyRef Name="AtributoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Personage__CorCa__46E78A0C">
     <End Role="Cor" Type="Self.Cor" Multiplicity="0..1" />
     <End Role="Personagem" Type="Self.Personagem" Multiplicity="*" />
@@ -94,7 +106,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Personage__CorOl__47DBAE45">
+  <Association Name="FK__Personage__CorOl__48CFD27E">
     <End Role="Cor" Type="Self.Cor" Multiplicity="0..1" />
     <End Role="Personagem" Type="Self.Personagem" Multiplicity="*" />
     <ReferentialConstraint>
@@ -106,7 +118,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Personage__CorPe__48CFD27E">
+  <Association Name="FK__Personage__CorPe__49C3F6B7">
     <End Role="Cor" Type="Self.Cor" Multiplicity="0..1" />
     <End Role="Personagem" Type="Self.Personagem" Multiplicity="*" />
     <ReferentialConstraint>
@@ -166,18 +178,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Personagem_Atributo">
-    <End Role="Atributo" Type="Self.Atributo" Multiplicity="0..1" />
-    <End Role="Personagem" Type="Self.Personagem" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Atributo">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Personagem">
-        <PropertyRef Name="AtributoId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="RPGDBModelStoreContainer">
     <EntitySet Name="Atributo" EntityType="Self.Atributo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Classe" EntityType="Self.Classe" Schema="dbo" store:Type="Tables" />
@@ -190,15 +190,19 @@
       <End Role="Cor" EntitySet="Cor" />
       <End Role="Habilidade" EntitySet="Habilidade" />
     </AssociationSet>
+    <AssociationSet Name="FK__Personage__Atrib__47DBAE45" Association="Self.FK__Personage__Atrib__47DBAE45">
+      <End Role="Atributo" EntitySet="Atributo" />
+      <End Role="Personagem" EntitySet="Personagem" />
+    </AssociationSet>
     <AssociationSet Name="FK__Personage__CorCa__46E78A0C" Association="Self.FK__Personage__CorCa__46E78A0C">
       <End Role="Cor" EntitySet="Cor" />
       <End Role="Personagem" EntitySet="Personagem" />
     </AssociationSet>
-    <AssociationSet Name="FK__Personage__CorOl__47DBAE45" Association="Self.FK__Personage__CorOl__47DBAE45">
+    <AssociationSet Name="FK__Personage__CorOl__48CFD27E" Association="Self.FK__Personage__CorOl__48CFD27E">
       <End Role="Cor" EntitySet="Cor" />
       <End Role="Personagem" EntitySet="Personagem" />
     </AssociationSet>
-    <AssociationSet Name="FK__Personage__CorPe__48CFD27E" Association="Self.FK__Personage__CorPe__48CFD27E">
+    <AssociationSet Name="FK__Personage__CorPe__49C3F6B7" Association="Self.FK__Personage__CorPe__49C3F6B7">
       <End Role="Cor" EntitySet="Cor" />
       <End Role="Personagem" EntitySet="Personagem" />
     </AssociationSet>
@@ -217,10 +221,6 @@
     <AssociationSet Name="FK__Subclasse__Class__38996AB5" Association="Self.FK__Subclasse__Class__38996AB5">
       <End Role="Classe" EntitySet="Classe" />
       <End Role="Subclasse" EntitySet="Subclasse" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Personagem_Atributo" Association="Self.FK_Personagem_Atributo">
-      <End Role="Atributo" EntitySet="Atributo" />
-      <End Role="Personagem" EntitySet="Personagem" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

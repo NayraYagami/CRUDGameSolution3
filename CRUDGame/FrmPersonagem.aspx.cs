@@ -32,7 +32,7 @@ namespace CRUDGame
             txtNome.Text = personagem.Nome;
             txtAltura.Text = personagem.Altura.ToString();
             txtCarisma.Text = personagem.Carisma.ToString();
-            txtDataNasc.Text = personagem.DataNasc.ToString();
+            txtDataNasc.Text = personagem.DataNasc != null ? ((DateTime)personagem.DataNasc).ToString("yyyy-MM-dd") : personagem.DataNasc.ToString();
             txtDestreza.Text = personagem.Destreza.ToString();
             txtEstiloCabelo.Text = personagem.EstiloCabelo.ToString();
             txtForca.Text = personagem.Forca.ToString();
@@ -246,6 +246,8 @@ namespace CRUDGame
         {
             String message = null;
             List<String> erros = new List<string>();
+            var cadastrando = btnConfirmar.Text == "Cadastrar";
+
             if (txtNome.Text == "")
             {
                 erros.Add("Nome vázio");
@@ -318,14 +320,31 @@ namespace CRUDGame
             {
                 erros.Add("Cor do Cabelo não informado");
             }
-            if (!fpImagem.HasFile)
-            {
-                erros.Add("Imagem precisa ser adicionada");
-            }
+            //if (!fpImagem.HasFile)
+            //{
+            //    erros.Add("Imagem precisa ser adicionada");
+            //}
 
             if (erros == null || erros.Count == 0)
             {
-                Personagem personagem = new Personagem();
+                Personagem personagem = null;
+                int id = -1;
+
+                if (cadastrando)
+                {
+                    personagem = new Personagem();
+                }
+                else
+                {
+                    //Alterando
+                    var idQuery = Request.QueryString["id"];
+                    if (idQuery != null)
+                    {
+                        id = Convert.ToInt32(idQuery);
+                        personagem = PersonagemDAO.ListarPersonagens(id);
+                    }
+                }
+
                 personagem.RacaId = Convert.ToInt32(ddlRaca.SelectedValue);
                 personagem.AtributoId = Convert.ToInt32(ddlAtributo.SelectedValue);
                 personagem.SubclasseId = Convert.ToInt32(ddlSubclasse.SelectedValue);
@@ -347,29 +366,40 @@ namespace CRUDGame
                 personagem.Sabedoria = Convert.ToInt32(txtSabedoria.Text);
                 personagem.Peso = Convert.ToDecimal(txtPeso.Text);
 
-                lblMensagem.InnerText = PersonagemDAO.CadastrarPersonagem(personagem);
 
-                var arquivo = fpImagem.PostedFile;
-                var tipo = arquivo.ContentType;
-
-                if (tipo.Contains("png"))
+                if (cadastrando)
                 {
-                    var caminhoAbsoluto = MapPath("~/upload");
-                    var nomeArquivo = personagem.Id + ".png";
-                    var nomeSalvar = caminhoAbsoluto + "\\" + nomeArquivo;
-
-                    arquivo.SaveAs(nomeSalvar);
-                    Image1.ImageUrl = "~/upload/" + nomeArquivo;
+                    lblMensagem.InnerText = PersonagemDAO.CadastrarPersonagem(personagem);
                 }
-                if (tipo.Contains("jpeg"))
+                else
                 {
-                    var caminhoAbsoluto = MapPath("~/upload");
-                    var nomeArquivo = personagem.Id + ".jpg";
-                    var nomeSalvar = caminhoAbsoluto + "\\" + nomeArquivo;
-
-                    arquivo.SaveAs(nomeSalvar);
-                    Image1.ImageUrl = "~/upload/" + nomeArquivo;
+                    lblMensagem.InnerText = PersonagemDAO.AlterarPersonagem(personagem);
+                    btnConfirmar.Text = "Cadastrar";
                 }
+
+                limparCampos();
+
+                //var arquivo = fpImagem.PostedFile;
+                //var tipo = arquivo.ContentType;
+
+                //if (tipo.Contains("png"))
+                //{
+                //    var caminhoAbsoluto = MapPath("~/upload");
+                //    var nomeArquivo = personagem.Id + ".png";
+                //    var nomeSalvar = caminhoAbsoluto + "\\" + nomeArquivo;
+
+                //    arquivo.SaveAs(nomeSalvar);
+                //    Image1.ImageUrl = "~/upload/" + nomeArquivo;
+                //}
+                //if (tipo.Contains("jpeg"))
+                //{
+                //    var caminhoAbsoluto = MapPath("~/upload");
+                //    var nomeArquivo = personagem.Id + ".jpg";
+                //    var nomeSalvar = caminhoAbsoluto + "\\" + nomeArquivo;
+
+                //    arquivo.SaveAs(nomeSalvar);
+                //    Image1.ImageUrl = "~/upload/" + nomeArquivo;
+                //}
                 PopularLVs();
             }
             else

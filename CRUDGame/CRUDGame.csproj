@@ -103,6 +103,7 @@
       <DependentUpon>RPGModel.edmx</DependentUpon>
       <LastGenOutput>RPGModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Utils\ScriptCrudGame.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
