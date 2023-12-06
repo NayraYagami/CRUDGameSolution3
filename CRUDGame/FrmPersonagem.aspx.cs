@@ -405,7 +405,6 @@ namespace CRUDGame
         {
             if (e.CommandName == "Excluir")
             {
-                limparCampos();
                 btnConfirmar.Text = "Cadastrar";
                 var id = e.CommandArgument;
                 if (id != null)
@@ -418,6 +417,7 @@ namespace CRUDGame
                         lblMensagem.InnerText = "Personagem " +
                             personagemExcluido.Nome +
                             " excluído com sucesso!";
+                        limparCampos();
                         PopularLVs();
                     }
                 }
