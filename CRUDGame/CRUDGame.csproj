@@ -79,6 +79,7 @@
     <Content Include="App_Data\RPGDB_log.ldf">
       <DependentUpon>RPGDB.mdf</DependentUpon>
     </Content>
+    <Content Include="css\default.css" />
     <Content Include="css\style.css" />
     <Content Include="Default.aspx" />
     <Content Include="FrmAtributo.aspx" />

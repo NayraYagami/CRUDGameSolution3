@@ -144,6 +144,124 @@
             <asp:Image ID="Image1" runat="server" />
         </p>
 
+        <h2>Cores cadastradas</h2>
+
+        <table border="1" class="tabela">
+            <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                <th>Habilidade</th>
+                <th>Raça</th>
+                <th>SubClasse</th>
+                <th>Nível</th>
+                <th>Data Nascimento</th>
+                <th>Sexo</th>
+                <th>Força</th>
+                <th>Destreza</th>
+                <th>Sabedoria</th>
+                <th>Constituição</th>
+                <th>Inteligência</th>
+                <th>Carisma</th>
+                <th>Peso</th>
+                <th>Altura</th>
+                <th>Cor Cabelo</th>
+                <th>Estilo Cabelo</th>
+                <th>Cor Olho</th>
+                <th>Cor Pele</th>
+                <th>Atributo</th>
+                <th>Ações</th>
+            </tr>
+
+            <asp:ListView runat="server" ID="lvPersonagens" OnItemCommand="lvPersonagens_ItemCommand">
+                <ItemTemplate>
+                    <tr>
+                        <td>
+                            <%# Eval("Id") %>
+                        </td>
+                        <td>
+                            <%# Eval("Nome") %>
+                        </td>
+                        <td>
+                            <%# Eval("HabilidadeId") %>
+                        </td>
+                        <td>
+                            <%# Eval("RacaId") %>
+                        </td>
+                        <td>
+                            <%# Eval("SubclasseId") %>
+                        </td>
+                        <td>
+                            <%# Eval("Nivel") %>
+                        </td>
+                        <td>
+                            <%# Eval("DataNasc") %>
+                        </td>
+                        <td>
+                            <%# Eval("Sexo") %>
+                        </td>
+                        <td>
+                            <%# Eval("Forca") %>
+                        </td>
+                        <td>
+                            <%# Eval("Destreza") %>
+                        </td>
+                        <td>
+                            <%# Eval("Sabedoria") %>
+                        </td>
+                        <td>
+                            <%# Eval("Constituicao") %>
+                        </td>
+                        <td>
+                            <%# Eval("Inteligencia") %>
+                        </td>
+                        <td>
+                            <%# Eval("Carisma") %>
+                        </td>
+                        <td>
+                            <%# Eval("Peso") %>
+                        </td>
+                        <td>
+                            <%# Eval("Altura") %>
+                        </td>
+                        <td>
+                            <%# Eval("CorCabeloId") %>
+                        </td>
+                        <td>
+                            <%# Eval("EstiloCabelo") %>
+                        </td>
+                        <td>
+                            <%# Eval("CorOlhoId") %>
+                        </td>
+                        <td>
+                            <%# Eval("CorPeleId") %>
+                        </td>
+                        <td>
+                            <%# Eval("AtributoId") %>
+                        </td>
+                        <td>
+                            <asp:ImageButton ID="btnVisualizar"
+                                runat="server"
+                                ImageUrl="img/view.svg"
+                                CommandName="Visualizar"
+                                CommandArgument='<%# Eval("Id") %>' />
+                            <asp:ImageButton ID="btnEditar"
+                                runat="server"
+                                ImageUrl="img/edit.svg"
+                                CommandName="Editar"
+                                CommandArgument='<%# Eval("Id") %>' />
+                            <asp:ImageButton ID="btnDeletar"
+                                runat="server"
+                                ImageUrl="img/delete.svg"
+                                CommandName="Excluir"
+                                CommandArgument='<%# Eval("Id") %>'
+                                OnClientClick="return confirm('Deseja realmente excluir esse Personagem?');" />
+                        </td>
+                    </tr>
+
+                </ItemTemplate>
+            </asp:ListView>
+        </table>
+
     </form>
 </body>
 </html>

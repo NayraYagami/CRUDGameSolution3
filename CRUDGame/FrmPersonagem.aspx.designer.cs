@@ -123,7 +123,7 @@ namespace CRUDGame
         protected global::System.Web.UI.WebControls.TextBox txtSabedoria;
 
         /// <summary>
-        /// Controle txtConstituicao .
+        /// Controle txtConstituicao.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
@@ -238,5 +238,14 @@ namespace CRUDGame
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image1;
+
+        /// <summary>
+        /// Controle lvPersonagens.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView lvPersonagens;
     }
 }
