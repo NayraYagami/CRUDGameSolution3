@@ -6,23 +6,26 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    <link href="../estilos.css" rel="stylesheet" />
+    <link href="../css/default.css" rel="stylesheet" />
 </head>
 <body>
     
 
     <form id="form1" runat="server">
 
-        <asp:LoginStatus ID="LoginStatus1" CssClass="login" runat="server" LoginText="Entrar" LogoutText="Sair" />
-        <h1>Tipo de Perfil: Administrador</h1>
         
-        <h3>Bem-vindo(a),
+        <h1>Administrador</h1>
+        
+        <h3 class="TituloBemVindo">Bem-vindo(a),
         <asp:LoginName ID="LoginName1" runat="server" />
         </h3>
 
         <div>
             <a href="~/Inicio" runat="server">Acessar Gerenciador</a>
         </div>
+        <asp:LoginStatus ID="LoginStatus1" CssClass="login" runat="server" LogoutText="Sair" />
     </form>
+
+    
 </body>
 </html>

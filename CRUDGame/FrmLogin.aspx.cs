@@ -42,22 +42,14 @@ namespace CRUDGame
                     {
                         Response.Redirect("~/Administrador/FrmAdministrador.aspx");
                     }
-                    else if (perfil == "Gerente")
-                    {
-                        Response.Redirect("~/gerente");
-                    }
-                    else if (perfil == "Vendedor")
-                    {
-                        Response.Redirect("~/vendedor");
-                    }
                     else
                     {
-                        //Mensagem de erro
+                        lblMensagem.InnerText = "Usuário não possui permissão de acesso!";
                     }
                 }
                 else
                 {
-                    //Enviar mensagem de erro
+                    lblMensagem.InnerText = "Login ou senha incorretos!";
                 }
             }
         }
