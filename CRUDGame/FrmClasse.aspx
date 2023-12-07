@@ -24,7 +24,7 @@
                 <asp:TextBox runat="server" ID="txtDescricao" />
             </p>
             <p>
-                <asp:Button Text="Cadastrar"
+                <asp:Button Text="Cadastrar" CssClass="btnConfirmarClasse"
                     runat="server"
                     ID="btnConfirmar" OnClick="btnConfirmar_Click" />
             </p>

@@ -12,7 +12,7 @@
     <h1>Sistema de Acesso</h1>
     <form id="formLogin" runat="server">
         <div>
-            <a class="btnInicio" href="~/Inicio" runat="server">Início</a>
+            <a class="btnInicioLogin" href="~/FrmGerenciarUsuario.aspx" runat="server">Cadastre-se</a>
         </div>
         <div>
             <fieldset>

@@ -12,7 +12,7 @@
     <h1>Gerenciar Usuário</h1>
     <form id="formGerenciarUsuario" runat="server">
         <div>
-            <a class="btnInicio" href="~/Inicio" runat="server">Início</a>
+            <a class="btnInicioUsuario" href="~/FrmLogin.aspx" runat="server">Login</a>
         </div>
         <div>
             <fieldset>

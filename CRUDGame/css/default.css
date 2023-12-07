@@ -88,15 +88,24 @@ input#txtEstiloCabelo, select#ddlCorOlhos, select#ddlCorPele {
     justify-content: center;
 }
 
-
-
-form#formCor, form#formClasse, form#formGerenciarUsuario, form#formLogin, form#formRaca, form#formSubclasse {
+form#formCor, form#formClasse, form#formLogin, form#formRaca, form#formSubclasse {
     width: fit-content;
-    display: inline-table;
-    position: sticky;
+    display: grid;
+    position: absolute;
     left: 42%;
     z-index: -1;
-    bottom: 1em;
+    top: 10em;
+    justify-items: center;
+}
+
+
+form#formGerenciarUsuario {
+    width: fit-content;
+    display: inline-table;
+    position: absolute;
+    left: 42%;
+    z-index: -1;
+    top: 10em;
     justify-items: center;
 }
 
@@ -123,7 +132,7 @@ form#formPersonagem {
     left: 40%;
 }
 
-input#btnConfirmar, a.btnInicio {
+input#btnConfirmar, a.btnInicio{
     padding: 1em;
     margin: 5px;
     font-size: 15px;
@@ -138,11 +147,26 @@ input#btnConfirmar, a.btnInicio {
     justify-content: center;
 }
 
-    input#btnConfirmar:hover, a.btnInicio:hover {
+    input#btnConfirmar:hover, a.btnInicio:hover, a.btnInicioLogin:hover, a.btnInicioUsuario:hover {
         transform: scale(1.1);
         color: white;
         background-color: #086A87;
     }
+
+a.btnInicioLogin, a.btnInicioUsuario {
+    padding: 1em;
+    margin: 5px;
+    font-size: 15px;
+    width: 70%;
+    text-decoration: none;
+    color: #086A87;
+    transition: transform .3s;
+    border: 1px solid;
+    border-radius: 50px;
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+}
 
 a.btnInicioAdm {
     padding: 1em;
@@ -191,6 +215,10 @@ input#btnConfirmar {
     margin-left: 5.6em;
 }
 
-.btnConfirmarRaca, .btnConfirmarSubclasse {
+.btnConfirmarRaca, .btnConfirmarSubclasse, .btnConfirmarCor, .btnConfirmarHabilidade, .btnConfirmarClasse {
     margin-left: 5px !important;
+}
+
+table.tabela {
+    margin-bottom: 2em;
 }
