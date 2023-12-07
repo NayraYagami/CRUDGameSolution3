@@ -19,6 +19,11 @@
         <AssociationConnector Association="RPGDBModel.FK__Personage__Habil__4222D4EF" />
         <AssociationConnector Association="RPGDBModel.FK__Personage__RacaI__4316F928" />
         <AssociationConnector Association="RPGDBModel.FK__Personage__Subcl__440B1D61" />
+        <EntityTypeShape EntityType="RPGDBModel.LogAcesso" Width="1.5" PointX="11.875" PointY="1.375" />
+        <EntityTypeShape EntityType="RPGDBModel.PerfilUsuario" Width="1.5" PointX="7.375" PointY="1.375" />
+        <EntityTypeShape EntityType="RPGDBModel.Usuario" Width="1.5" PointX="9.625" PointY="1" />
+        <AssociationConnector Association="RPGDBModel.FK_LogAcesso_Usuario" />
+        <AssociationConnector Association="RPGDBModel.FK_Usuario_PerfilUsuario" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

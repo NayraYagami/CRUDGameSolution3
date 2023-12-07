@@ -39,6 +39,17 @@
       <End Role="Subclasse" EntitySet="Subclasses" />
       <End Role="Personagem" EntitySet="Personagems" />
     </AssociationSet>
+    <EntitySet Name="LogAcessoes" EntityType="RPGDBModel.LogAcesso" />
+    <EntitySet Name="PerfilUsuarios" EntityType="RPGDBModel.PerfilUsuario" />
+    <EntitySet Name="Usuarios" EntityType="RPGDBModel.Usuario" />
+    <AssociationSet Name="FK_LogAcesso_Usuario" Association="RPGDBModel.FK_LogAcesso_Usuario">
+      <End Role="Usuario" EntitySet="Usuarios" />
+      <End Role="LogAcesso" EntitySet="LogAcessoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_PerfilUsuario" Association="RPGDBModel.FK_Usuario_PerfilUsuario">
+      <End Role="PerfilUsuario" EntitySet="PerfilUsuarios" />
+      <End Role="Usuario" EntitySet="Usuarios" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Classe">
     <Key>
@@ -211,6 +222,60 @@
       </Principal>
       <Dependent Role="Personagem">
         <PropertyRef Name="SubclasseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="LogAcesso">
+    <Key>
+      <PropertyRef Name="IdLogAcesso" />
+    </Key>
+    <Property Name="IdLogAcesso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+    <Property Name="DataHoraAcesso" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Usuario" Relationship="RPGDBModel.FK_LogAcesso_Usuario" FromRole="LogAcesso" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="PerfilUsuario">
+    <Key>
+      <PropertyRef Name="IdPerfilUsuario" />
+    </Key>
+    <Property Name="IdPerfilUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descricao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Usuarios" Relationship="RPGDBModel.FK_Usuario_PerfilUsuario" FromRole="PerfilUsuario" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Login" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Senha" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="DataNasc" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PerfilUsuarioId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="LogAcessoes" Relationship="RPGDBModel.FK_LogAcesso_Usuario" FromRole="Usuario" ToRole="LogAcesso" />
+    <NavigationProperty Name="PerfilUsuario" Relationship="RPGDBModel.FK_Usuario_PerfilUsuario" FromRole="Usuario" ToRole="PerfilUsuario" />
+  </EntityType>
+  <Association Name="FK_LogAcesso_Usuario">
+    <End Type="RPGDBModel.Usuario" Role="Usuario" Multiplicity="1" />
+    <End Type="RPGDBModel.LogAcesso" Role="LogAcesso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="LogAcesso">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_PerfilUsuario">
+    <End Type="RPGDBModel.PerfilUsuario" Role="PerfilUsuario" Multiplicity="1" />
+    <End Type="RPGDBModel.Usuario" Role="Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PerfilUsuario">
+        <PropertyRef Name="IdPerfilUsuario" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="PerfilUsuarioId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

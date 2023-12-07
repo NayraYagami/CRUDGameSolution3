@@ -69,5 +69,34 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="LogAcessoes">
+      <EntityTypeMapping TypeName="RPGDBModel.LogAcesso">
+        <MappingFragment StoreEntitySet="LogAcesso">
+          <ScalarProperty Name="DataHoraAcesso" ColumnName="DataHoraAcesso" />
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+          <ScalarProperty Name="IdLogAcesso" ColumnName="IdLogAcesso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PerfilUsuarios">
+      <EntityTypeMapping TypeName="RPGDBModel.PerfilUsuario">
+        <MappingFragment StoreEntitySet="PerfilUsuario">
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="IdPerfilUsuario" ColumnName="IdPerfilUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="RPGDBModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="PerfilUsuarioId" ColumnName="PerfilUsuarioId" />
+          <ScalarProperty Name="DataNasc" ColumnName="DataNasc" />
+          <ScalarProperty Name="Senha" ColumnName="Senha" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
