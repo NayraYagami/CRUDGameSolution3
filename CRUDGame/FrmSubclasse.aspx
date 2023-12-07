@@ -6,13 +6,13 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Gerenciar Subclasses</title>
-    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/default.css" rel="stylesheet" />
 </head>
 <body>
     <h1>Gerenciar Subclasses</h1>
-    <form id="form1" runat="server">
+    <form id="formSubclasse" runat="server">
         <div>
-            <a href="~/Inicio" runat="server">Início</a>
+            <a class="btnInicio" href="~/Inicio" runat="server">Início</a>
         </div>
 
         <fieldset>
@@ -29,7 +29,7 @@
                 </asp:DropDownList>
             </p>
             <p>
-                <asp:Button Text="Cadastrar"
+                <asp:Button Text="Cadastrar" CssClass="btnConfirmarSubclasse"
                     runat="server"
                     ID="btnConfirmar" OnClick="btnConfirmar_Click" />
             </p>

@@ -5,13 +5,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="css/default.css" rel="stylesheet" />
     <title></title>
 </head>
 <body>
     <h1>Gerenciar Cores</h1>
-    <form id="form1" runat="server">
+    <form id="formCor" runat="server">
         <div>
-            <a href="~/Inicio" runat="server">Início</a>
+            <a class="btnInicio" href="~/Inicio" runat="server">Início</a>
         </div>
 
         <fieldset>

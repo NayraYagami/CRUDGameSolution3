@@ -5,13 +5,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="css/default.css" rel="stylesheet" />
     <title>Gerenciamento de Raças</title>
 </head>
 <body>
     <h1>Gerenciar Raças</h1>
-    <form id="form1" runat="server">
+    <form id="formRaca" runat="server">
         <div>
-            <a href="~/Inicio" runat="server">Início</a>
+            <a class="btnInicio" href="~/Inicio" runat="server">Início</a>
         </div>
 
         <fieldset>
@@ -23,7 +24,7 @@
                 <asp:TextBox runat="server" ID="txtDescricao" />
             </p>
             <p>
-                <asp:Button Text="Cadastrar"
+                <asp:Button Text="Cadastrar" CssClass="btnConfirmarRaca"
                     runat="server"
                     ID="btnConfirmar" OnClick="btnConfirmar_Click" />
             </p>

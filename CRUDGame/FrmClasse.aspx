@@ -6,13 +6,13 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Gerenciamento de Classes</title>
-    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/default.css" rel="stylesheet" />
 </head>
 <body>
     <h1>Gerenciar Classes</h1>
-    <form id="form1" runat="server">
+    <form id="formClasse" runat="server">
         <div>
-            <a href="~/Inicio" runat="server">Início</a>
+            <a class="btnInicio" href="~/Inicio" runat="server">Início</a>
         </div>
 
         <fieldset>

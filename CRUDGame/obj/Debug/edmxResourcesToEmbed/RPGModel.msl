@@ -26,6 +26,23 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="LogAcessoes">
+      <EntityTypeMapping TypeName="RPGDBModel.LogAcesso">
+        <MappingFragment StoreEntitySet="LogAcesso">
+          <ScalarProperty Name="DataHoraAcesso" ColumnName="DataHoraAcesso" />
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+          <ScalarProperty Name="IdLogAcesso" ColumnName="IdLogAcesso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PerfilUsuarios">
+      <EntityTypeMapping TypeName="RPGDBModel.PerfilUsuario">
+        <MappingFragment StoreEntitySet="PerfilUsuario">
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="IdPerfilUsuario" ColumnName="IdPerfilUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Personagems">
       <EntityTypeMapping TypeName="RPGDBModel.Personagem">
         <MappingFragment StoreEntitySet="Personagem">
@@ -66,23 +83,6 @@
           <ScalarProperty Name="ClasseId" ColumnName="ClasseId" />
           <ScalarProperty Name="Descricao" ColumnName="Descricao" />
           <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="LogAcessoes">
-      <EntityTypeMapping TypeName="RPGDBModel.LogAcesso">
-        <MappingFragment StoreEntitySet="LogAcesso">
-          <ScalarProperty Name="DataHoraAcesso" ColumnName="DataHoraAcesso" />
-          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
-          <ScalarProperty Name="IdLogAcesso" ColumnName="IdLogAcesso" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PerfilUsuarios">
-      <EntityTypeMapping TypeName="RPGDBModel.PerfilUsuario">
-        <MappingFragment StoreEntitySet="PerfilUsuario">
-          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
-          <ScalarProperty Name="IdPerfilUsuario" ColumnName="IdPerfilUsuario" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -34,17 +34,17 @@ namespace CRUDGame
         {
             try
             {
-                var senha = txtSenha.Value;
-                var repetirSenha = txtRepetirSenha.Value;
+                var senha = txtSenha.Text;
+                var repetirSenha = txtRepetirSenha.Text;
 
                 if (senha == repetirSenha)
                 {
                     if (ddlPerfilUsuario.SelectedIndex > 0)
                     {
                         Usuario usuario = new Usuario();
-                        usuario.DataNasc = Convert.ToDateTime(txtDataNasc.Value);
-                        usuario.Login = txtLogin.Value;
-                        usuario.Nome = txtNomeUsuario.Value;
+                        usuario.DataNasc = Convert.ToDateTime(txtDataNasc.Text);
+                        usuario.Login = txtLogin.Text;
+                        usuario.Nome = txtNomeUsuario.Text;
                         usuario.PerfilUsuarioId =
                             Convert.ToInt32(ddlPerfilUsuario.SelectedValue);
 
@@ -57,20 +57,102 @@ namespace CRUDGame
                         string mensagem = UsuarioDAO.CadastrarUsuario(usuario);
 
                         lblMensagem.InnerText = mensagem;
+                        limparCampos();
                     }
                     else
                     {
-                        //Exibir mensagem informando para selecionar o perfil
+                        lblMensagem.InnerText = "Selecione um Perfil de Usuário!";
                     }
                 }
                 else
                 {
-                    //Disparar mensagem de erro sobre as senhas
+                    lblMensagem.InnerText = "As senhas devem ser iguais!";
                 }
             }
             catch (Exception ex)
             {
+                lblMensagem.InnerText = "Ops, algo deu errado!";
             }
+            
+        }
+
+        private void limparCampos()
+        {
+            txtNomeUsuario.Text = "";
+            ddlPerfilUsuario.Items.Insert(0, "Selecione..");
+            ddlPerfilUsuario.SelectedIndex = 0;
+            txtDataNasc.Text = "";
+            txtLogin.Text = "";
+            txtSenha.Text = "";
+            txtRepetirSenha.Text = "";
+        }
+        private void refresh(bool limparMensagem)
+        {
+            txtNomeUsuario.Text = "";
+            if (limparMensagem)
+            {
+                lblMensagem.InnerText = "";
+            }
+            Response.Redirect("~/FrmGerenciarUsuario.aspx");
+        }
+
+        protected void Recarregar_Click(object sender, EventArgs e)
+        {
+            refresh(true);
+        }
+
+        protected void lvUsuario_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Excluir")
+            {
+                limparCampos();
+                btnCadastrar.Text = "Cadastrar";
+                var id = e.CommandArgument;
+                if (id != null)
+                {
+                    int idUsuario = Convert.ToInt32(id);
+                    Usuario usuarioExcluido =
+                        UsuarioDAO.Remover(idUsuario);
+                    if (usuarioExcluido != null)
+                    {
+                        lblMensagem.InnerText = "Usuário " +
+                            usuarioExcluido.Nome +
+                            " excluído com sucesso!";
+                        PopularLVs();
+                        refresh(false);
+                    }
+                }
+                Response.Redirect(Request.RawUrl, true);
+
+            }
+            else if (e.CommandName == "Visualizar")
+            {
+                var id = e.CommandArgument;
+                if (id != null)
+                {
+                    Response.Redirect("~/GerenciarUsuarios.aspx?id=" + id + "&edit=false");
+                }
+            }
+            else if (e.CommandName == "Editar")
+            {
+                var id = e.CommandArgument;
+                if (id != null)
+                {
+                    Response.Redirect("~/GerenciarUsuarios.aspx?id=" + id + "&edit=true");
+                }
+            }
+        }
+
+        private void PopularLVs()
+        {
+            var usuarios = UsuarioDAO.ListarUsuarios();
+            PopularLVUsuarios(usuarios);
+        }
+
+        private void PopularLVUsuarios(object usuarios)
+        {
+            lvUsuarios.DataSource = usuarios;
+            lvUsuarios.DataBind();
         }
     }
 }

@@ -119,7 +119,7 @@ namespace CRUDGame
             {
                 lblMensagem.InnerText = "";
             }
-            Response.Redirect("~/Racas");
+            Response.Redirect("~/Habilidades");
         }
 
         protected void Recarregar_Click(object sender, EventArgs e)

@@ -11,7 +11,7 @@
 <body>
     
 
-    <form id="form1" runat="server">
+    <form id="formAdministrador" runat="server">
 
         
         <h1>Administrador</h1>
@@ -21,7 +21,8 @@
         </h3>
 
         <div>
-            <a href="~/Inicio" runat="server">Acessar Gerenciador</a>
+            <a class="btnInicioAdm" href="~/Inicio" runat="server">Gerenciador Geral</a>
+            <a class="btnInicioAdm" href="~/FrmGerenciarUsuario.aspx" runat="server">Gerenciar Usuários</a>
         </div>
         <asp:LoginStatus ID="LoginStatus1" CssClass="login" runat="server" LogoutText="Sair" />
     </form>

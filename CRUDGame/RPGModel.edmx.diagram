@@ -4,26 +4,26 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bc13c899b83d40f99039b9a43ec91724" Name="Diagram1" >
-        <EntityTypeShape EntityType="RPGDBModel.Classe" Width="1.5" PointX="0.75" PointY="1.125" />
+      <Diagram DiagramId="9f76b6bda871445a83f1754da747d98d" Name="Diagram1" >
+        <EntityTypeShape EntityType="RPGDBModel.Classe" Width="1.5" PointX="0.75" PointY="7.25" />
         <EntityTypeShape EntityType="RPGDBModel.Cor" Width="1.5" PointX="0.75" PointY="3.875" />
         <EntityTypeShape EntityType="RPGDBModel.Habilidade" Width="1.5" PointX="3" PointY="3.875" />
+        <EntityTypeShape EntityType="RPGDBModel.LogAcesso" Width="1.5" PointX="12.25" PointY="2.125" />
+        <EntityTypeShape EntityType="RPGDBModel.PerfilUsuario" Width="1.5" PointX="7.75" PointY="2.25" />
         <EntityTypeShape EntityType="RPGDBModel.Personagem" Width="1.5" PointX="5.25" PointY="1.875" />
-        <EntityTypeShape EntityType="RPGDBModel.Raca" Width="1.5" PointX="3" PointY="7.5" />
-        <EntityTypeShape EntityType="RPGDBModel.Subclasse" Width="1.5" PointX="3" PointY="0.75" />
-        <AssociationConnector Association="RPGDBModel.FK__Subclasse__Class__38996AB5" />
-        <AssociationConnector Association="RPGDBModel.FK__Habilidad__CorId__3F466844" />
-        <AssociationConnector Association="RPGDBModel.FK__Personage__CorCa__44FF419A" />
-        <AssociationConnector Association="RPGDBModel.FK__Personage__CorOl__45F365D3" />
-        <AssociationConnector Association="RPGDBModel.FK__Personage__CorPe__46E78A0C" />
-        <AssociationConnector Association="RPGDBModel.FK__Personage__Habil__4222D4EF" />
-        <AssociationConnector Association="RPGDBModel.FK__Personage__RacaI__4316F928" />
-        <AssociationConnector Association="RPGDBModel.FK__Personage__Subcl__440B1D61" />
-        <EntityTypeShape EntityType="RPGDBModel.LogAcesso" Width="1.5" PointX="11.875" PointY="1.375" />
-        <EntityTypeShape EntityType="RPGDBModel.PerfilUsuario" Width="1.5" PointX="7.375" PointY="1.375" />
-        <EntityTypeShape EntityType="RPGDBModel.Usuario" Width="1.5" PointX="9.625" PointY="1" />
+        <EntityTypeShape EntityType="RPGDBModel.Raca" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="RPGDBModel.Subclasse" Width="1.5" PointX="3" PointY="7.125" />
+        <EntityTypeShape EntityType="RPGDBModel.Usuario" Width="1.5" PointX="10" PointY="1.75" />
+        <AssociationConnector Association="RPGDBModel.FK__Subclasse__Class__25869641" />
+        <AssociationConnector Association="RPGDBModel.FK__Habilidad__CorId__2C3393D0" />
+        <AssociationConnector Association="RPGDBModel.FK__Personage__CorCa__31EC6D26" />
+        <AssociationConnector Association="RPGDBModel.FK__Personage__CorOl__32E0915F" />
+        <AssociationConnector Association="RPGDBModel.FK__Personage__CorPe__33D4B598" />
+        <AssociationConnector Association="RPGDBModel.FK__Personage__Habil__2F10007B" />
         <AssociationConnector Association="RPGDBModel.FK_LogAcesso_Usuario" />
         <AssociationConnector Association="RPGDBModel.FK_Usuario_PerfilUsuario" />
+        <AssociationConnector Association="RPGDBModel.FK__Personage__RacaI__300424B4" />
+        <AssociationConnector Association="RPGDBModel.FK__Personage__Subcl__30F848ED" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

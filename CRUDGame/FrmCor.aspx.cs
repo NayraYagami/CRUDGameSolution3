@@ -146,7 +146,7 @@ namespace CRUDGame
             {
                 lblMensagem.InnerText = "";
             }
-            Response.Redirect("~/Racas");
+            Response.Redirect("~/Cores");
         }
 
         protected void Recarregar_Click(object sender, EventArgs e)

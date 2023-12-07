@@ -15,13 +15,13 @@ namespace CRUDGame
     {
 
         /// <summary>
-        /// Controle form1.
+        /// Controle formPersonagem.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm formPersonagem;
 
         /// <summary>
         /// Controle ddlHabilidade.

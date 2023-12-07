@@ -81,7 +81,6 @@
       <DependentUpon>RPGDB.mdf</DependentUpon>
     </Content>
     <Content Include="css\default.css" />
-    <Content Include="css\style.css" />
     <Content Include="Default.aspx" />
     <Content Include="FrmClasse.aspx" />
     <Content Include="FrmCor.aspx" />

@@ -15,13 +15,13 @@ namespace CRUDGame
     {
 
         /// <summary>
-        /// Controle form1.
+        /// Controle formGerenciarUsuario.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm formGerenciarUsuario;
 
         /// <summary>
         /// Controle txtNomeUsuario.
@@ -30,7 +30,7 @@ namespace CRUDGame
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtNomeUsuario;
+        protected global::System.Web.UI.WebControls.TextBox txtNomeUsuario;
 
         /// <summary>
         /// Controle ddlPerfilUsuario.
@@ -48,7 +48,7 @@ namespace CRUDGame
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtDataNasc;
+        protected global::System.Web.UI.WebControls.TextBox txtDataNasc;
 
         /// <summary>
         /// Controle txtLogin.
@@ -57,7 +57,7 @@ namespace CRUDGame
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtLogin;
+        protected global::System.Web.UI.WebControls.TextBox txtLogin;
 
         /// <summary>
         /// Controle txtSenha.
@@ -66,7 +66,7 @@ namespace CRUDGame
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txtSenha;
+        protected global::System.Web.UI.WebControls.TextBox txtSenha;
 
         /// <summary>
         /// Controle txtRepetirSenha.
@@ -75,7 +75,7 @@ namespace CRUDGame
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txtRepetirSenha;
+        protected global::System.Web.UI.WebControls.TextBox txtRepetirSenha;
 
         /// <summary>
         /// Controle btnCadastrar.
@@ -94,5 +94,23 @@ namespace CRUDGame
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblMensagem;
+
+        /// <summary>
+        /// Controle Recarregar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Recarregar;
+
+        /// <summary>
+        /// Controle lvUsuarios.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView lvUsuarios;
     }
 }

@@ -8,7 +8,7 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="formErro" runat="server">
         <div>
             Ocorreu um erro!
         </div>

@@ -5,16 +5,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="css/default.css" rel="stylesheet" />
     <title>Gerenciar Personagens</title>
 </head>
 <body>
     <h1>Gerenciar Personagens</h1>
-    <form id="form1" runat="server">
+    <form id="formPersonagem" runat="server">
         <div>
-            <a href="~/Inicio" runat="server">Início</a>
+            <a class="btnInicio" href="~/Inicio" runat="server">Início</a>
         </div>
 
-        <fieldset>
+        <fieldset id="FieldPersonagem">
             <legend>Criar novo personagem
             </legend>
 
@@ -72,22 +73,22 @@
             </p>
 
             <p>
-                <label>Constituição :</label>
+                <label>Constituição:</label>
                 <asp:TextBox runat="server" ID="txtConstituicao" />
             </p>
 
             <p>
-                <label>Inteligência :</label>
+                <label>Inteligência:</label>
                 <asp:TextBox runat="server" ID="txtInteligencia" />
             </p>
 
             <p>
-                <label>Carisma :</label>
+                <label>Carisma:</label>
                 <asp:TextBox runat="server" ID="txtCarisma" />
             </p>
 
             <p>
-                <label>Peso :</label>
+                <label>Peso:</label>
                 <asp:TextBox runat="server" ID="txtPeso" />
             </p>
 

@@ -129,3 +129,9 @@ CREATE TABLE [dbo].[LogAcesso] (
     PRIMARY KEY CLUSTERED ([IdLogAcesso] ASC),
     CONSTRAINT [FK_LogAcesso_Usuario] FOREIGN KEY ([UsuarioId]) REFERENCES [dbo].[Usuario] ([IdUsuario])
 );
+
+INSERT INTO PerfilUsuario (Descricao) VALUES ('Administrador');
+
+INSERT INTO Usuario (Nome, Login, Senha, DataNasc, PerfilUsuarioId) VALUES ('Cleziel Franzoni da Costa', 'Cleziel', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '2000-02-20', 1); -- Senha: 123
+INSERT INTO Usuario (Nome, Login, Senha, DataNasc, PerfilUsuarioId) VALUES ('Estella Vieira Pereira', 'Estella', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '2000-02-20', 1); -- Senha: 123
+INSERT INTO Usuario (Nome, Login, Senha, DataNasc, PerfilUsuarioId) VALUES ('Nayra Silva Pinto', 'Nayra', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '2000-02-20', 1); -- Senha: 123

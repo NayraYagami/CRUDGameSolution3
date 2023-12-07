@@ -47,5 +47,51 @@ namespace CRUDGame
 
             return userAutenticado;
         }
+
+        internal static Usuario Remover(int idUsuario)
+        {
+            Usuario usuario = null;
+
+            using (var ctx = new RPGDBEntities2())
+            {
+                usuario = ctx.Usuarios.FirstOrDefault(
+                        x => x.IdUsuario == idUsuario
+                     );
+                ctx.Usuarios.Remove(usuario);
+                ctx.SaveChanges();
+            }
+            return usuario;
+        }
+
+        internal static object ListarUsuarios(int id)
+        {
+            Usuario usuario = null;
+
+            using (var ctx = new RPGDBEntities2())
+            {
+                usuario = ctx.Usuarios.FirstOrDefault(
+                        x => x.IdUsuario == id
+                    );
+            }
+
+            return usuario;
+        }
+
+        internal static object ListarUsuarios()
+        {
+            List<Usuario> usuarios = null;
+            try
+            {
+                using (var ctx = new RPGDBEntities2())
+                {
+                    usuarios = ctx.Usuarios.OrderBy(
+                        x => x.Nome).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return usuarios;
+        }
     }
 }
