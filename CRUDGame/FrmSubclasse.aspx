@@ -38,6 +38,12 @@
             </p>
         </fieldset>
 
+        <p>
+            <asp:Button Text="Recarregar"
+                runat="server"
+                ID="Recarregar" OnClick="Recarregar_Click" />
+        </p>
+
 
         <h2>SubClasses cadastradas</h2>
 

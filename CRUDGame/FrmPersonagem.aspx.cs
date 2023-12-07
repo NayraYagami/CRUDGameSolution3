@@ -65,28 +65,7 @@ namespace CRUDGame
             }
             else
             {
-                //Visualizando
-                fpImagem.Visible = false;
-                btnConfirmar.Visible = false;
-                txtNome.Enabled = false;
-                txtAltura.Enabled = false;
-                txtCarisma.Enabled = false;
-                txtDataNasc.Enabled = false;
-                txtDestreza.Enabled = false;
-                txtEstiloCabelo.Enabled = false;
-                txtForca.Enabled = false;
-                txtInteligencia.Enabled = false;
-                txtNivel.Enabled = false;
-                txtPeso.Enabled = false;
-                txtSabedoria.Enabled = false;
-                txtSexo.Enabled = false;
-                txtConstituicao.Enabled = false;
-                ddlCorCabelo.Enabled = false;
-                ddlCorOlhos.Enabled = false;
-                ddlCorPele.Enabled = false;
-                ddlHabilidade.Enabled = false;
-                ddlRaca.Enabled = false;
-                ddlSubclasse.Enabled = false;
+                HabilitarDesabilitarCampos(false);
                 string jpgPath = $"~/upload/{id}.jpg";
                 string pngPath = $"~/upload/{id}.png";
                 Image1.ImageUrl = File.Exists(Server.MapPath(jpgPath)) ? jpgPath : pngPath;
@@ -405,6 +384,7 @@ namespace CRUDGame
         {
             if (e.CommandName == "Excluir")
             {
+                limparCampos();
                 btnConfirmar.Text = "Cadastrar";
                 var id = e.CommandArgument;
                 if (id != null)
@@ -417,8 +397,8 @@ namespace CRUDGame
                         lblMensagem.InnerText = "Personagem " +
                             personagemExcluido.Nome +
                             " excluído com sucesso!";
-                        limparCampos();
                         PopularLVs();
+                        refresh(false);
                     }
                 }
                 Response.Redirect(Request.RawUrl, true);
@@ -482,6 +462,50 @@ namespace CRUDGame
         {
             lvPersonagens.DataSource = personagens;
             lvPersonagens.DataBind();
+        }
+
+        protected void CadastrarNovo_Click(object sender, EventArgs e)
+        {
+            refresh(true);
+        }
+
+        private void refresh(bool limparMensagem)
+        {
+            limparCampos();
+            btnConfirmar.Text = "Cadastrar";
+            fpImagem.Visible = true;
+            if (limparMensagem)
+            {
+                lblMensagem.InnerText = "";
+            }
+            Response.Redirect("~/Personagens");
+            HabilitarDesabilitarCampos(true);
+        }
+
+        private void HabilitarDesabilitarCampos(bool habilitar)
+        {
+            txtNome.Enabled = habilitar;
+            txtAltura.Enabled = habilitar;
+            txtCarisma.Enabled = habilitar;
+            txtDataNasc.Enabled = habilitar;
+            txtDestreza.Enabled = habilitar;
+            txtEstiloCabelo.Enabled = habilitar;
+            txtForca.Enabled = habilitar;
+            txtInteligencia.Enabled = habilitar;
+            txtNivel.Enabled = habilitar;
+            txtPeso.Enabled = habilitar;
+            txtSabedoria.Enabled = habilitar;
+            txtSexo.Enabled = habilitar;
+            txtConstituicao.Enabled = habilitar;
+            ddlCorCabelo.Enabled = habilitar;
+            ddlCorOlhos.Enabled = habilitar;
+            ddlCorPele.Enabled = habilitar;
+            ddlHabilidade.Enabled = habilitar;
+            ddlRaca.Enabled = habilitar;
+            ddlSubclasse.Enabled = habilitar;
+            fpImagem.Visible = habilitar;
+            btnConfirmar.Visible = habilitar;
+            Image1.Visible = !habilitar;
         }
     }
 }

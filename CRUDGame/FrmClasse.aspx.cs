@@ -110,8 +110,6 @@ namespace CRUDGame
         {
             if (e.CommandName == "Excluir")
             {
-                txtDescricao.Text = "";
-                btnConfirmar.Text = "Cadastrar";
                 var id = e.CommandArgument;
                 if (id != null)
                 {
@@ -124,6 +122,7 @@ namespace CRUDGame
                             subExcluida.Descricao +
                             " excluída com sucesso!";
                         PopularLVs();
+                        refresh(false);
                     }
                 }
             }
@@ -143,6 +142,23 @@ namespace CRUDGame
                     Response.Redirect("~/Classes?id=" + id + "&edit=true");
                 }
             }
+        }
+
+        protected void Recarregar_Click(object sender, EventArgs e)
+        {
+            refresh(true);
+        }
+
+        private void refresh(bool limparMensagem)
+        {
+            txtDescricao.Text = "";
+            txtDescricao.Enabled = true;
+            btnConfirmar.Text = "Cadastrar";
+            if (limparMensagem)
+            {
+                lblMensagem.InnerText = "";
+            }
+            Response.Redirect("~/Classes");
         }
     }
 }

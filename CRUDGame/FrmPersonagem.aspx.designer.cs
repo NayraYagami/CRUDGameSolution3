@@ -222,6 +222,15 @@ namespace CRUDGame
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblMensagem;
 
         /// <summary>
+        /// Controle CadastrarNovo.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button CadastrarNovo;
+
+        /// <summary>
         /// Controle Image1.
         /// </summary>
         /// <remarks>

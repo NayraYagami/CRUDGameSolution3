@@ -32,6 +32,12 @@
             </p>
         </fieldset>
 
+         <p>
+                <asp:Button Text="Recarregar"
+                    runat="server"
+                    ID="Recarregar" OnClick="Recarregar_Click"/>
+            </p>
+
         <h2>Raças cadastradas</h2>
 
         <table border="1" class="tabela">

@@ -45,8 +45,6 @@ namespace CRUDGame
         {
             if (e.CommandName == "Excluir")
             {
-                txtDescricao.Text = "";
-                btnConfirmar.Text = "Cadastrar";
                 var id = e.CommandArgument;
                 if (id != null)
                 {
@@ -59,6 +57,7 @@ namespace CRUDGame
                             corExcluida.Descricao +
                             " excluída com sucesso!";
                         PopularLVs();
+                        refresh(false);
                     }
                 }
             }
@@ -99,7 +98,7 @@ namespace CRUDGame
 
             if (descricao != "")
             {
-                Cor novaCor= null;
+                Cor novaCor = null;
 
                 int id = -1;
 
@@ -137,6 +136,22 @@ namespace CRUDGame
                 lblMensagem.InnerText = mensagem;
                 PopularLVs();
             }
+        }
+        private void refresh(bool limparMensagem)
+        {
+            txtDescricao.Text = "";
+            txtDescricao.Enabled = true;
+            btnConfirmar.Text = "Cadastrar";
+            if (limparMensagem)
+            {
+                lblMensagem.InnerText = "";
+            }
+            Response.Redirect("~/Racas");
+        }
+
+        protected void Recarregar_Click(object sender, EventArgs e)
+        {
+            refresh(true);
         }
     }
 }

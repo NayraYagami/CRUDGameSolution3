@@ -76,8 +76,6 @@ namespace CRUDGame
         {
             if (e.CommandName == "Excluir")
             {
-                txtDescricao.Text = "";
-                btnConfirmar.Text = "Cadastrar";
                 var id = e.CommandArgument;
                 if (id != null)
                 {
@@ -90,6 +88,7 @@ namespace CRUDGame
                             habilidadeExcluida.Descricao +
                             " excluída com sucesso!";
                         PopularLVs();
+                        refresh(true);
                     }
                 }
             }
@@ -109,6 +108,23 @@ namespace CRUDGame
                     Response.Redirect("~/Habilidades?id=" + id + "&edit=true");
                 }
             }
+        }
+
+        private void refresh(bool limparMensagem)
+        {
+            txtDescricao.Text = "";
+            txtDescricao.Enabled = true;
+            btnConfirmar.Text = "Cadastrar";
+            if (limparMensagem)
+            {
+                lblMensagem.InnerText = "";
+            }
+            Response.Redirect("~/Racas");
+        }
+
+        protected void Recarregar_Click(object sender, EventArgs e)
+        {
+            refresh(true);
         }
     }
 }

@@ -40,6 +40,7 @@ namespace CRUDGame
             {
                 btnConfirmar.Visible = false;
                 txtDescricao.Enabled = false;
+                DDLClasse.Enabled = false;
             }
             if (subclasse != null && subclasse.GetClasse != null)
             {
@@ -104,6 +105,7 @@ namespace CRUDGame
                     SubclasseDAO.CadastrarSubclasse(novaSubclasse);
                 //Limpando o campo de texto
                 txtDescricao.Text = "";
+                DDLClasse.SelectedIndex = 0;
 
                 lblMensagem.InnerText = mensagem;
                 PopularLVs();
@@ -114,9 +116,6 @@ namespace CRUDGame
         {
             if (e.CommandName == "Excluir")
             {
-                txtDescricao.Text = "";
-                btnConfirmar.Text = "Cadastrar";
-                DDLClasse.SelectedIndex = 0;
                 var id = e.CommandArgument;
                 if (id != null)
                 {
@@ -129,6 +128,7 @@ namespace CRUDGame
                             subExcluida.Descricao +
                             " excluída com sucesso!";
                         PopularLVs();
+                        refresh(false);
                     }
                 }
             }
@@ -148,6 +148,26 @@ namespace CRUDGame
                     Response.Redirect("~/SubClasses?id=" + id + "&edit=true");
                 }
             }
+        }
+
+        protected void Recarregar_Click(object sender, EventArgs e)
+        {
+            refresh(true);
+
+        }
+
+        private void refresh(bool limparMensagem)
+        {
+            txtDescricao.Text = "";
+            DDLClasse.SelectedIndex = 0;
+            txtDescricao.Enabled = true;
+            DDLClasse.Enabled = true;
+            btnConfirmar.Text = "Cadastrar";
+            if (limparMensagem)
+            {
+                lblMensagem.InnerText = "";
+            }
+            Response.Redirect("~/SubClasses");
         }
     }
 }

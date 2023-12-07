@@ -134,6 +134,12 @@
         </fieldset>
 
         <p>
+            <asp:Button Text="Recarregar"
+                runat="server"
+                ID="CadastrarNovo" OnClick="CadastrarNovo_Click" />
+        </p>
+
+        <p>
             <asp:Image ID="Image1" runat="server" />
         </p>
 
