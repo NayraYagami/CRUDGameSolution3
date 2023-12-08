@@ -397,6 +397,22 @@ namespace CRUDGame
                         lblMensagem.InnerText = "Personagem " +
                             personagemExcluido.Nome +
                             " excluído com sucesso!";
+                        var caminhoAbsoluto = MapPath("~/upload");
+                        var nomeArquivoPNG = idPersonagem + ".png";
+                        var nomeArquivoJPG = idPersonagem + ".jpg";
+
+                        var localArquivoPNG = Path.Combine(caminhoAbsoluto, nomeArquivoPNG);
+                        var localArquivoJPG = Path.Combine(caminhoAbsoluto, nomeArquivoJPG);
+
+                        if (File.Exists(localArquivoPNG))
+                        {
+                            File.Delete(localArquivoPNG);
+                        }
+
+                        if (File.Exists(localArquivoJPG))
+                        {
+                            File.Delete(localArquivoJPG);
+                        }
                         PopularLVs();
                         refresh(false);
                     }
