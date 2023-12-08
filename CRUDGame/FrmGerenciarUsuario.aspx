@@ -72,7 +72,6 @@
                 <th>Nome</th>
                 <th>Login</th>
                 <th>Data Nascimento</th>
-                <th>Perfil Usuário</th>
                 <th>Ações</th>
             </tr>
 
@@ -87,9 +86,6 @@
                         </td>
                         <td>
                             <%# Eval("DataNasc") %>
-                        </td>
-                        <td>
-                            <%# Eval("PerfilUsuarioId") %>
                         </td>
                         <td>
                             <asp:ImageButton ID="btnEditar"

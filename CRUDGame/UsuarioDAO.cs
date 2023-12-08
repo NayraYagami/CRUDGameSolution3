@@ -101,14 +101,12 @@ namespace CRUDGame
             {
                 using (RPGDBEntities2 ctx = new RPGDBEntities2())
                 {
-                    Usuario usuario = ctx.Usuarios.FirstOrDefault(
-                        x => x.IdUsuario == novoUsuario.IdUsuario);
-
+                    Usuario usuario = ctx.Usuarios.FirstOrDefault(x => x.IdUsuario == novoUsuario.IdUsuario);
                     usuario.Nome = novoUsuario.Nome;
                     usuario.Login = novoUsuario.Login;
                     usuario.DataNasc = novoUsuario.DataNasc;
+                    usuario.Senha = novoUsuario.Senha;
                     ctx.SaveChanges();
-
                     mensagem = "Usuário " + novoUsuario.Nome + " alterado com sucesso!";
                 }
             }

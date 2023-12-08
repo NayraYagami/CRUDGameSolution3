@@ -94,6 +94,9 @@
     <Content Include="img\delete.svg" />
     <Content Include="img\edit.svg" />
     <Content Include="img\view.svg" />
+    <Content Include="upload\1.jpg" />
+    <Content Include="upload\2.jpg" />
+    <Content Include="upload\3.jpg" />
     <Content Include="Utils\log_acessos.txt" />
     <Content Include="RPGModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -261,9 +264,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="upload\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

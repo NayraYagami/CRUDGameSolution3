@@ -102,7 +102,7 @@ INSERT INTO Personagem (
     Peso, Altura, CorCabeloId, EstiloCabelo, CorOlhoId, CorPeleId
 ) VALUES (
     3, 3, 3, 6, 'Legolas', '1990-05-20', 'M', 14, 20, 16, 12, 10, 15,
-    65.8, 1.80, 3, 'Curto', 3, 1
+    65.8, 1.80, 3, 'Longo', 3, 1
 );
 
 CREATE TABLE [dbo].[PerfilUsuario] (
