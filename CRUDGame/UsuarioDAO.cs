@@ -63,7 +63,7 @@ namespace CRUDGame
             return usuario;
         }
 
-        internal static object ListarUsuarios(int id)
+        internal static Usuario ListarUsuarios(int id)
         {
             Usuario usuario = null;
 
@@ -92,6 +92,32 @@ namespace CRUDGame
             {
             }
             return usuarios;
+        }
+
+        internal static string AlterarUsuario(Usuario novoUsuario)
+        {
+            string mensagem = "";
+            try
+            {
+                using (RPGDBEntities2 ctx = new RPGDBEntities2())
+                {
+                    Usuario usuario = ctx.Usuarios.FirstOrDefault(
+                        x => x.IdUsuario == novoUsuario.IdUsuario);
+
+                    usuario.Nome = novoUsuario.Nome;
+                    usuario.Login = novoUsuario.Login;
+                    usuario.DataNasc = novoUsuario.DataNasc;
+                    ctx.SaveChanges();
+
+                    mensagem = "Usuário " + novoUsuario.Nome + " alterado com sucesso!";
+                }
+            }
+            catch (Exception ex)
+            {
+                mensagem = ex.Message;
+            }
+
+            return mensagem;
         }
     }
 }

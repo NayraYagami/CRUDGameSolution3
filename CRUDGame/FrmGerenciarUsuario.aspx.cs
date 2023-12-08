@@ -17,6 +17,31 @@ namespace CRUDGame
                 List<PerfilUsuario> perfis =
                     PerfilUsuarioDAO.ListarPerfis();
                 AtualizarDDLPerfil(perfis);
+                PopularLVs();
+
+                var queryString_ID = Request.QueryString["id"];
+                var queryString_Edit = Request.QueryString["edit"];
+
+                if (queryString_ID != null && queryString_Edit != null)
+                {
+                    int id = Convert.ToInt32(queryString_ID);
+                    PreencherDados(id, queryString_Edit == "true");
+                }
+                PopularLVs();
+
+            }
+        }
+
+        private void PreencherDados(int id, bool edit)
+        {
+            var usuario = UsuarioDAO.ListarUsuarios(id);
+            txtNomeUsuario.Text = usuario.Nome;
+            txtLogin.Text = usuario.Login;
+            txtDataNasc.Text = usuario.DataNasc != null ? ((DateTime)usuario.DataNasc).ToString("yyyy-MM-dd") : usuario.DataNasc.ToString();
+
+            if (edit)
+            {
+                btnCadastrar.Text = "Alterar";
             }
         }
 
@@ -36,44 +61,89 @@ namespace CRUDGame
             {
                 var senha = txtSenha.Text;
                 var repetirSenha = txtRepetirSenha.Text;
+                var cadastrando = btnCadastrar.Text == "Cadastrar";
+                List<String> erros = new List<string>();
 
-                if (senha == repetirSenha)
+                if (txtNomeUsuario.Text == "")
                 {
-                    if (ddlPerfilUsuario.SelectedIndex > 0)
+                    erros.Add("Nome vázio");
+                }
+                if (txtDataNasc.Text == "")
+                {
+                    erros.Add("Data de nascimento vázia!");
+                }
+                if (txtLogin.Text == "")
+                {
+                    erros.Add("Login não informado!");
+                }
+                if (txtSenha.Text == "")
+                {
+                    erros.Add("Senha não informada!");
+                }
+                if (txtRepetirSenha.Text == "")
+                {
+                    erros.Add("Repita a senha!");
+                }
+
+                if (erros == null || erros.Count == 0)
+                {
+
+                    Usuario usuario = null;
+                    int id = -1;
+
+                    if (cadastrando)
                     {
-                        Usuario usuario = new Usuario();
-                        usuario.DataNasc = Convert.ToDateTime(txtDataNasc.Text);
-                        usuario.Login = txtLogin.Text;
-                        usuario.Nome = txtNomeUsuario.Text;
-                        usuario.PerfilUsuarioId =
-                            Convert.ToInt32(ddlPerfilUsuario.SelectedValue);
-
-                        //Criptografando a senha
-                        var senhaCriptografada =
-                                FormsAuthentication.
-                                HashPasswordForStoringInConfigFile(senha, "SHA1");
-                        usuario.Senha = senhaCriptografada;
-
-                        string mensagem = UsuarioDAO.CadastrarUsuario(usuario);
-
-                        lblMensagem.InnerText = mensagem;
-                        limparCampos();
+                        usuario = new Usuario();
                     }
                     else
                     {
-                        lblMensagem.InnerText = "Selecione um Perfil de Usuário!";
+                        var idQuery = Request.QueryString["id"];
+                        if (idQuery != null)
+                        {
+                            id = Convert.ToInt32(idQuery);
+                            usuario = UsuarioDAO.ListarUsuarios(id);
+                        }
                     }
-                }
-                else
-                {
-                    lblMensagem.InnerText = "As senhas devem ser iguais!";
+                    if (senha == repetirSenha)
+                    {
+                        if (ddlPerfilUsuario.SelectedIndex > 0)
+                        {
+                            usuario.Nome = txtNomeUsuario.Text;
+                            usuario.Login = txtLogin.Text;
+                            usuario.DataNasc = Convert.ToDateTime(txtDataNasc.Text);
+                            usuario.PerfilUsuarioId = Convert.ToInt32(ddlPerfilUsuario.SelectedValue);
+                            var senhaCriptografada = FormsAuthentication.HashPasswordForStoringInConfigFile(senha, "SHA1");
+                            usuario.Senha = senhaCriptografada;
+
+                            if (cadastrando)
+                            {
+                                lblMensagem.InnerText = UsuarioDAO.CadastrarUsuario(usuario);
+                            }
+                            else
+                            {
+                                lblMensagem.InnerText = UsuarioDAO.AlterarUsuario(usuario);
+                                btnCadastrar.Text = "Cadastrar";
+                            }
+
+                            limparCampos();
+                            PopularLVs();                          
+                        }
+                        else
+                        {
+                            lblMensagem.InnerText = "Selecione um Perfil de Usuário!";
+                        }
+                    }
+                    else
+                    {
+                        lblMensagem.InnerText = "As senhas devem ser iguais!";
+                    }
                 }
             }
             catch (Exception ex)
             {
                 lblMensagem.InnerText = "Ops, algo deu errado!";
             }
-            
+
         }
 
         private void limparCampos()
@@ -115,37 +185,29 @@ namespace CRUDGame
                         UsuarioDAO.Remover(idUsuario);
                     if (usuarioExcluido != null)
                     {
-                        lblMensagem.InnerText = "Usuário " +
-                            usuarioExcluido.Nome +
-                            " excluído com sucesso!";
-                        PopularLVs();
-                        refresh(false);
+                        lblMensagem.InnerText = "Usuário " + usuarioExcluido.Nome + " excluído com sucesso!";
+                        Response.Redirect("~/FrmLogin.aspx");
                     }
                 }
                 Response.Redirect(Request.RawUrl, true);
 
-            }
-            else if (e.CommandName == "Visualizar")
-            {
-                var id = e.CommandArgument;
-                if (id != null)
-                {
-                    Response.Redirect("~/GerenciarUsuarios.aspx?id=" + id + "&edit=false");
-                }
             }
             else if (e.CommandName == "Editar")
             {
                 var id = e.CommandArgument;
                 if (id != null)
                 {
-                    Response.Redirect("~/GerenciarUsuarios.aspx?id=" + id + "&edit=true");
+                    Response.Redirect("~/FrmGerenciarUsuario.aspx?id=" + id + "&edit=true");
                 }
             }
         }
 
         private void PopularLVs()
         {
-            var usuarios = UsuarioDAO.ListarUsuarios();
+            List<Usuario> usuarios = new List<Usuario>();
+            var IdUsuarioLogado = Request.QueryString["id"];
+            Usuario usuario = UsuarioDAO.ListarUsuarios(Convert.ToInt32(IdUsuarioLogado));
+            usuarios.Add(usuario);
             PopularLVUsuarios(usuarios);
         }
 

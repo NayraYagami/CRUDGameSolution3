@@ -103,7 +103,7 @@ form#formGerenciarUsuario {
     width: fit-content;
     display: inline-table;
     position: absolute;
-    left: 42%;
+    left: 35%;
     z-index: -1;
     top: 10em;
     justify-items: center;
@@ -168,7 +168,7 @@ a.btnInicioLogin, a.btnInicioUsuario {
     justify-content: center;
 }
 
-a.btnInicioAdm {
+a.btnInicioAdm, input#btnGerenciarUsuario {
     padding: 1em;
     margin: 5px;
     font-size: 15px;
@@ -182,7 +182,7 @@ a.btnInicioAdm {
     display: flex;
     justify-content: center;
 }
-    a.btnInicioAdm:hover {
+    a.btnInicioAdm:hover, input#btnGerenciarUsuario:hover {
         transform: scale(1.1);
         color: white;
         background-color: #086A87;

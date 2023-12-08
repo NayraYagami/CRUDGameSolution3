@@ -29,18 +29,13 @@ namespace CRUDGame
 
                 if (userAutenticado != null)
                 {
-                    //Registrá-lo como válido
                     FormsAuthentication.SetAuthCookie(userAutenticado.Nome, true);
-
                     LogAcessoDAO.RegistrarAcesso(userAutenticado, DateTime.Now);
-
                     var perfil = userAutenticado.GetPerfil.Descricao;
-
-
 
                     if (perfil == "Administrador")
                     {
-                        Response.Redirect("~/Administrador/FrmAdministrador.aspx");
+                        Response.Redirect("~/Administrador/FrmAdministrador.aspx?id=" + userAutenticado.IdUsuario);
                     }
                     else
                     {

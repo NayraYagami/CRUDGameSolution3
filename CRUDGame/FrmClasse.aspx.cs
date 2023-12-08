@@ -30,18 +30,13 @@ namespace CRUDGame
             var classe = ClasseDAO.ListarClasses(id);
             txtDescricao.Text = classe.Descricao;
 
-            //Verifica se iremos editar os dados ou não
             if (edit) {
-                //Editando
                 btnConfirmar.Text = "Alterar";
             }
             else {
-                //Visualizando
                 btnConfirmar.Visible = false;
                 txtDescricao.Enabled = false;
             }
-
-
         }
 
         private void PopularLVs()
@@ -63,9 +58,7 @@ namespace CRUDGame
 
             if (descricao != "")
             {
-                //Criando uma instância da classe (objeto)
                 Classe novaClasse = null;
-                //Caso id seja -1, não existe uma classe para ser alterada
                 int id = -1;
                 
                 if (cadastrando)
@@ -74,7 +67,6 @@ namespace CRUDGame
                 }
                 else
                 {
-                    //Alterando
                     var idQuery = Request.QueryString["id"];
                     if (idQuery != null)
                     {
@@ -82,10 +74,7 @@ namespace CRUDGame
                         novaClasse = ClasseDAO.ListarClasses(id);
                     }
                 }
-                //Preencher o objeto
                 novaClasse.Descricao = descricao;
-
-
                 string mensagem = "";
 
                 if (cadastrando)
@@ -98,7 +87,6 @@ namespace CRUDGame
                     btnConfirmar.Text = "Cadastrar";
                 }
 
-                //Limpando o campo de texto
                 txtDescricao.Text = "";
 
                 lblMensagem.InnerText = mensagem;

@@ -5,7 +5,7 @@ namespace CRUDGame
 {
     internal class LogAcessoDAO
     {
-        private const string CaminhoArquivoLog = "log_acessos.txt";
+        private const string CaminhoArquivoLog = "~/Utils/log_acessos.txt";
         internal static void RegistrarAcesso(Usuario userAutenticado, DateTime now)
         {
             try

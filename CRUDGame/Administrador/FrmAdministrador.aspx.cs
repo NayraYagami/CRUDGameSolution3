@@ -13,5 +13,11 @@ namespace CRUDGame.Administrador
         {
 
         }
+
+        protected void btnGerenciarUsuario_Click(object sender, EventArgs e)
+        {
+            var IdUsuarioLogado = Request.QueryString["id"];
+            Response.Redirect("~/FrmGerenciarUsuario.aspx?id=" + IdUsuarioLogado);
+        }
     }
 }

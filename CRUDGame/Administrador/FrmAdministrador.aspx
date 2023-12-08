@@ -22,8 +22,9 @@
 
         <div>
             <a class="btnInicioAdm" href="~/Inicio" runat="server">Gerenciador Geral</a>
-            <a class="btnInicioAdm" href="~/FrmGerenciarUsuario.aspx" runat="server">Gerenciar Usuários</a>
+            <asp:Button ID="btnGerenciarUsuario" runat="server" Text="Gerenciar Usuários" OnClick="btnGerenciarUsuario_Click" CssClass="btnInicioAdm" />
         </div>
+        
         <asp:LoginStatus ID="LoginStatus1" CssClass="login" runat="server" LogoutText="Sair" />
     </form>
 

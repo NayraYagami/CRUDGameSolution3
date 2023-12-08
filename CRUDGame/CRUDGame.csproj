@@ -94,6 +94,7 @@
     <Content Include="img\delete.svg" />
     <Content Include="img\edit.svg" />
     <Content Include="img\view.svg" />
+    <Content Include="Utils\log_acessos.txt" />
     <Content Include="RPGModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>RPGModel.edmx</DependentUpon>

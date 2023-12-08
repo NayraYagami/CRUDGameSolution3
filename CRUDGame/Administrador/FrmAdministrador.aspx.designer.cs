@@ -33,6 +33,15 @@ namespace CRUDGame.Administrador
         protected global::System.Web.UI.WebControls.LoginName LoginName1;
 
         /// <summary>
+        /// Controle btnGerenciarUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnGerenciarUsuario;
+
+        /// <summary>
         /// Controle LoginStatus1.
         /// </summary>
         /// <remarks>

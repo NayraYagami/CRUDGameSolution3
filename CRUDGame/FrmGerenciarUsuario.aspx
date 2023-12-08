@@ -73,17 +73,17 @@
                 <th>Login</th>
                 <th>Data Nascimento</th>
                 <th>Perfil Usuário</th>
-
+                <th>Ações</th>
             </tr>
 
             <asp:ListView runat="server" ID="lvUsuarios" OnItemCommand="lvUsuario_ItemCommand">
                 <ItemTemplate>
                     <tr>
                         <td>
-                            <%# Eval("Id") %>
+                            <%# Eval("Nome") %>
                         </td>
                         <td>
-                            <%# Eval("Nome") %>
+                            <%# Eval("Login") %>
                         </td>
                         <td>
                             <%# Eval("DataNasc") %>
@@ -92,25 +92,19 @@
                             <%# Eval("PerfilUsuarioId") %>
                         </td>
                         <td>
-                            <asp:ImageButton ID="btnVisualizar"
-                                runat="server"
-                                ImageUrl="img/view.svg"
-                                CommandName="Visualizar"
-                                CommandArgument='<%# Eval("Id") %>' />
                             <asp:ImageButton ID="btnEditar"
                                 runat="server"
                                 ImageUrl="img/edit.svg"
                                 CommandName="Editar"
-                                CommandArgument='<%# Eval("Id") %>' />
+                                CommandArgument='<%# Eval("IdUsuario") %>' />
                             <asp:ImageButton ID="btnDeletar"
                                 runat="server"
                                 ImageUrl="img/delete.svg"
                                 CommandName="Excluir"
-                                CommandArgument='<%# Eval("Id") %>'
+                                CommandArgument='<%# Eval("IdUsuario") %>'
                                 OnClientClick="return confirm('Deseja realmente excluir esse Usuário?');" />
                         </td>
                     </tr>
-
                 </ItemTemplate>
             </asp:ListView>
         </table>
